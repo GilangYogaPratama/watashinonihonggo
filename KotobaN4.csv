@@ -1,0 +1,828 @@
+﻿26,みます,見ます. 診ます,"melihat, memeriksa"
+26,さがします,探します. 捜します,mencari
+26,おくれます,遅れます,terlambat
+26,まにあいます,間に合います,"sempat, tepat waktu"
+26,やります,—,melakukan
+26,ひろいます,拾います,"mengambil, menemukan"
+26,れんらくします,連絡します,menghubungi
+26,きぶんがいい,気分がいい,merasa segar
+26,きぶんがわるい,気分が悪い,merasa tidak enak
+26,うんどうかい,運動会,lomba olahraga
+26,ぼんおどり,盆踊り,tarian Bon
+26,フリーマーケット,—,pasar loak
+26,ばしょ,場所,tempat
+26,ボランティア,—,sukarelawan
+26,さいふ,財布,dompet
+26,ごみ,—,sampah
+26,こっかいぎじどう,国会議事堂,gedung parlemen
+26,へいじつ,平日,hari kerja
+26,～べん,～弁,dialek
+26,こんど,今度,"kali ini, lain kali"
+26,ずいぶん,—,"sangat, amat"
+26,ちょくせつ,直接,langsung
+26,いつでも,—,kapan saja
+26,どこでも,—,di mana saja
+26,だれでも,—,siapa saja
+26,なんでも,何でも,apa saja
+26,こんな～,—,seperti ini
+26,そんな～,—,seperti itu
+26,あんな～,—,seperti itu (jauh)
+26,かたづきます,片づきます,membereskan
+26,だします,出します,membuang
+26,もえるごみ,燃えるごみ,sampah organik
+26,おきば,置き場,tempat meletakkan
+26,よこ,横,samping
+26,びん,瓶,botol
+26,かん,缶,kaleng
+26,ガス,—,gas
+26,うちゅう,宇宙,angkasa
+26,～さま,～様,Tuan/Nyonya
+26,うちゅうせん,宇宙船,pesawat luar angkasa
+26,こわい,怖い,takut
+26,うちゅうステーション,宇宙ステーション,stasiun luar angkasa
+26,ちがいます,違います,"berbeda, salah"
+26,うちゅうひこうし,宇宙飛行士,astronot
+27,かいます,飼います,memelihara
+27,はしります,走ります,berlari
+27,みえます,見えます,terlihat
+27,きこえます,聞こえます,terdengar
+27,できます,—,dibuat
+27,ひらきます,開きます,membuka
+27,しんぱい,心配,khawatir
+27,ペット,—,hewan peliharaan
+27,とり,鳥,burung
+27,こえ,声,suara
+27,なみ,波,ombak
+27,はなび,花火,kembang api
+27,どうぐ,道具,alat
+27,クリーニング,—,laundry
+27,いえ,家,rumah
+27,マンション,—,apartemen
+27,キッチン,—,dapur
+27,～きょうしつ,～教室,kelas
+27,パーティールーム,—,ruang pesta
+27,かた,方,orang (halus)
+27,～ご,～後,setelah
+27,～しか,—,hanya
+27,ほかの,—,yang lain
+27,はっきり,—,jelas
+27,かぐ,家具,furnitur
+27,ほんだな,本棚,rak buku
+27,いつか,—,suatu saat
+27,たてます,建てます,membangun
+27,すばらしい,—,luar biasa
+27,こどもたち,子どもたち,anak-anak
+27,だいすき,大好き,sangat suka
+27,しゅじんこう,主人公,tokoh utama
+27,かたち,形,bentuk
+27,ふしぎ,不思議,ajaib
+27,ポケット,—,kantong
+27,たとえば,例えば,misalnya
+27,つけます,付けます,memasang
+27,じゆうに,自由に,dengan bebas
+27,そら,空,langit
+27,とびます,飛びます,terbang
+27,むかし,昔,dulu
+27,じぶん,自分,diri sendiri
+27,しょうらい,将来,masa depan
+28,うれます,売れます,terjual
+28,おどります,踊ります,menari
+28,かみます,—,"menggigit, mengunyah"
+28,えらびます,選びます,memilih
+28,かよいます,通います,pergi rutin
+28,メモします,—,mencatat
+28,まじめ,真面目,serius
+28,ねっしん,熱心,tekun
+28,えらい,偉い,hebat
+28,ちょうどいい,—,pas
+28,けしき,景色,pemandangan
+28,びよういん,美容院,salon
+28,だいどころ,台所,dapur
+28,けいけん,経験,pengalaman
+28,ちから,力,tenaga
+28,にんき,人気,populer
+28,かたち,形,bentuk
+28,いろ,色,warna
+28,あじ,味,rasa
+28,ガム,—,permen karet
+28,しなもの,品物,barang
+28,ねだん,値段,harga
+28,きゅうりょう,給料,gaji
+28,ボーナス,—,bonus
+28,ゲーム,—,permainan
+28,ばんぐみ,番組,acara TV
+28,ドラマ,—,drama
+28,かしゅ,歌手,penyanyi
+28,しょうせつ,小説,novel
+28,しょうせつか,小説家,novelis
+28,むすこ,息子,anak laki-laki
+28,むすこさん,息子さん,putra
+28,むすめ,娘,anak perempuan
+28,むすめさん,娘さん,putri
+28,じぶん,自分,diri sendiri
+28,しょうらい,将来,masa depan
+28,しばらく,—,sementara
+28,たいてい,—,biasanya
+28,それに,—,selain itu
+28,それで,—,lalu
+28,じつは,実は,sebenarnya
+28,かいわ,会話,percakapan
+28,おしらせ,お知らせ,pengumuman
+28,さんかします,参加します,ikut
+28,ひにち,日にち,tanggal
+28,ど,土,Sabtu
+28,たいいくかん,体育館,gedung olahraga
+28,むりょう,無料,gratis
+28,さそいます,誘います,mengajak
+28,イベント,—,acara
+29,あきます,開きます,terbuka
+29,しまります,閉まります,tertutup
+29,つきます,点きます,menyala
+29,きえます,消えます,padam
+29,こわれます,壊れます,rusak
+29,われます,割れます,pecah
+29,おれます,折れます,patah
+29,やぶれます,破れます,robek
+29,よごれます,汚れます,menjadi kotor
+29,つきます,付きます,terpasang
+29,はずれます,外れます,terlepas
+29,とまります,止まります,berhenti
+29,まちがえます,間違えます,salah
+29,おとします,落とします,menjatuhkan
+29,かかります,掛かります,terkunci
+29,[かぎが～],[鍵が～],kunci ～
+29,ふきます,拭きます,mengelap
+29,とりかえます,取り替えます,mengganti
+29,かたづけます,片づけます,membereskan
+29,さら,皿,piring
+29,ちゃわん,茶碗,mangkuk nasi
+29,コップ,—,gelas
+29,ガラス,—,kaca
+29,ふくろ,袋,kantong
+29,しょるい,書類,dokumen
+29,えだ,枝,ranting
+29,えきいん,駅員,petugas stasiun
+29,このへん,この辺,sekitar sini
+29,～へん,～辺,sekitar ～
+29,さっき,—,tadi
+29,たったいま,たった今,baru saja
+29,いまにも,今にも,sebentar lagi
+29,「でんきがつきません」,「電気がつきません」,“Lampunya tidak menyala”
+29,それなら,—,kalau begitu
+29,おかしい,—,aneh
+29,しばらくですね,—,sudah lama ya
+29,～のところ,～の所,bagian ～
+29,なおします,直します,memperbaiki
+29,うごきます,動きます,bergerak
+29,ひきだし,引き出し,laci
+29,でんち,電池,baterai
+30,はります,貼ります,menempelkan
+30,かけます,掛けます,menggantungkan
+30,かざります,飾ります,menghiasi
+30,ならべます,並べます,menata
+30,うえます,植えます,menanam
+30,もどします,戻します,mengembalikan
+30,まとめます,纏めます,merangkum
+30,しまいます,—,menyimpan
+30,きめます,決めます,menentukan
+30,よしゅうします,予習します,belajar pendahuluan
+30,ふくしゅうします,復習します,mengulang pelajaran
+30,そのままにします,そのままにします,membiarkan apa adanya
+30,じゅぎょう,授業,pelajaran
+30,こうぎ,講義,kuliah
+30,ミーティング,—,rapat
+30,よてい,予定,rencana
+30,おしらせ,お知らせ,pemberitahuan
+30,あんないしょ,案内書,buku panduan
+30,カレンダー,—,kalender
+30,ポスター,—,poster
+30,ごみばこ,ごみ箱,tempat sampah
+30,にんぎょう,人形,boneka
+30,かびん,花瓶,vas bunga
+30,かがみ,鏡,cermin
+30,ひきだし,引き出し,laci
+30,げんかん,玄関,pintu masuk
+30,ろうか,廊下,lorong
+30,かべ,壁,dinding
+30,いけ,池,kolam
+30,もとのところ,元の所,tempat semula
+30,まわり,周り,sekitar
+30,まんなか,真ん中,tengah
+30,すみ,隅,sudut
+30,まだ,—,masih
+30,～ほど,～程,sekitar ～
+30,よていひょう,予定表,jadwal
+30,よく,良く,dengan baik
+30,ほうそうします,放送します,menyiarkan
+30,れんらくします,連絡します,menghubungi
+30,ほしい,欲しい,ingin
+30,とりあえず,—,untuk sementara
+30,どのくらい,—,seberapa banyak
+30,なにか,何か,sesuatu
+30,だれか,誰か,seseorang
+30,～について,～について,tentang ～
+30,じゅんび,準備,persiapan
+30,かいじょう,会場,lokasi acara
+30,せき,席,kursi/tempat duduk
+30,うけつけ,受付,resepsionis
+30,ひつよう,必要,perlu
+31,つづけます,続けます,melanjutkan
+31,みつけます,見つけます,menemukan
+31,とります,取ります,mengambil
+31,うけます,受けます,mengikuti ujian
+31,もうしこみます,申し込みます,mendaftar
+31,きゅうけいします,休憩します,beristirahat
+31,れんきゅう,連休,liburan panjang
+31,さくぶん,作文,karangan
+31,はっぴょう,発表,presentasi
+31,てんらんかい,展覧会,pameran
+31,けっこんしき,結婚式,upacara pernikahan
+31,おそうしき,お葬式,pemakaman
+31,しき,式,upacara
+31,ほんしゃ,本社,kantor pusat
+31,してん,支店,kantor cabang
+31,きょうかい,教会,gereja
+31,だいがくいん,大学院,program pascasarjana
+31,どうぶつえん,動物園,kebun binatang
+31,おんせん,温泉,pemandian air panas
+31,おきゃくさん,お客様,tamu/pelanggan
+31,だれでも,誰でも,siapa saja
+31,～のかた,～の方,pihak ～
+31,つきます,着きます,tiba
+31,むり,無理,tidak mungkin
+31,ねつ,熱,demam
+31,きんえん,禁煙,larangan merokok
+31,けんこう,健康,kesehatan
+31,いわいます,祝います,merayakan
+31,あんないします,案内します,memandu
+31,りようします,利用します,menggunakan
+32,うんどうします,運動します,berolahraga
+32,せいこうします,成功します,berhasil
+32,しっぱいします,失敗します,gagal
+32,ごうかくします,合格します,lulus
+32,やみます,止みます,berhenti (hujan)
+32,はれます,晴れます,cerah
+32,くもります,曇ります,mendung
+32,つづきます,続きます,berlanjut
+32,ひやします,冷やします,mendinginkan
+32,こころ,心,hati
+32,あたま,頭,kepala
+32,のど,喉,tenggorokan
+32,おなか,お腹,perut
+32,せき,咳,batuk
+32,インフルエンザ,—,influenza
+32,ストレス,—,stres
+32,ほし,星,bintang
+32,ふう,風,cara/gaya
+32,むかし,昔,dulu
+32,きんえんします,禁煙します,berhenti merokok
+32,ダイエットします,—,diet
+32,むりをします,無理をします,memaksakan diri
+32,じゅうぶん,十分,cukup
+32,おかしい,—,aneh
+32,うるさい,—,berisik
+32,きけん,危険,berbahaya
+32,ひつよう,必要,perlu
+32,だいじょうぶ,大丈夫,tidak apa-apa
+32,できるだけ,—,sebisa mungkin
+32,しばらく,—,sementara
+33,にげます,逃げます,melarikan diri
+33,さわぎます,騒ぎます,membuat keributan
+33,あきらめます,諦めます,menyerah
+33,なげます,投げます,melempar
+33,まもります,守ります,melindungi
+33,はじまります,始まります,dimulai
+33,しゅっせきします,出席します,menghadiri
+33,つたえます,伝えます,menyampaikan
+33,ちゅういします,注意します,berhati-hati
+33,はずします,外します,meninggalkan tempat
+33,せき,席,kursi/tempat
+33,ファイト,—,semangat
+33,マーク,—,tanda
+33,ボール,—,bola
+33,せんたくき,洗濯機,mesin cuci
+33,～き,～機,mesin ～
+33,きそく,規則,peraturan
+33,しようきんし,使用禁止,dilarang digunakan
+33,たちいりきんし,立入禁止,dilarang masuk
+33,いりぐち,入り口,pintu masuk
+33,でぐち,出口,pintu keluar
+33,ひじょうぐち,非常口,pintu darurat
+33,むりょう,無料,gratis
+33,ほんじつきゅうぎょう,本日休業,tutup hari ini
+33,えいぎょうちゅう,営業中,sedang buka
+33,しようちゅう,使用中,sedang digunakan
+33,～ちゅう,～中,sedang ～
+33,どういう,—,seperti apa
+33,もう,—,sudah
+33,あと,後,setelah
+34,みがきます,磨きます,menggosok
+34,くみたてます,組み立てます,merakit
+34,おります,折ります,melipat
+34,きがつきます,気が付きます,menyadari
+34,つけます,付けます,menambahkan
+34,みつかります,見つかります,ditemukan
+34,しつもんします,質問します,bertanya
+34,さします,差します,memakai payung
+34,ちゃいろ,茶色,warna cokelat
+34,～いろ,～色,warna ～
+34,ちゃわん,茶碗,mangkuk nasi
+34,おゆ,お湯,air panas
+34,みずうみ,湖,danau
+34,おおきさ,大きさ,ukuran
+34,-センチ,—,-sentimeter
+34,こしょう,故障,kerusakan
+34,まがりかど,曲がり角,tikungan
+34,こうさてん,交差点,persimpangan
+34,しんごう,信号,lampu lalu lintas
+34,かど,角,sudut
+34,はし,橋,jembatan
+34,ちゅうしゃじょう,駐車場,tempat parkir
+34,～め,～目,ke-～
+34,おしょうがつ,お正月,tahun baru
+34,ごちそうさまでした,—,terima kasih atas makanannya
+34,たてもの,建物,bangunan
+34,がいこくじんとうろくしょう,外国人登録証,kartu registrasi asing
+34,どうしましたか,—,ada apa?
+34,じしん,地震,gempa bumi
+34,かべ,壁,dinding
+35,さきます,咲きます,mekar
+35,かわります,変わります,berubah
+35,こまります,困ります,bingung
+35,つけます,付けます,memberi tanda
+35,なおります,治ります . 直ります,"sembuh, membaik"
+35,クリックします,—,klik
+35,にゅうりょくします,入力します,memasukkan data
+35,ただしい,正しい,benar
+35,めずらしい,珍しい,langka
+35,ほう,方,cara
+35,むこう,向こう,seberang
+35,しま,島,pulau
+35,みなと,港,pelabuhan
+35,きんじょ,近所,lingkungan sekitar
+35,おくじょう,屋上,atap gedung
+35,かいがい,海外,luar negeri
+35,やまのぼり,山登り,mendaki gunung
+35,ハイキング,—,hiking
+35,きかい,機会,kesempatan
+35,きょか,許可,izin
+35,まる,丸,lingkaran
+35,そうさ,操作,pengoperasian
+35,ほうほう,方法,metode
+35,せつび,設備,fasilitas
+35,カーテン,—,tirai
+35,ひも,紐,tali
+35,よごれ,汚れ,noda
+35,まちがい,間違い,kesalahan
+35,こまかい,細かい,"detail, kecil"
+35,きぶん,気分,perasaan
+36,あいます,会います,"mengalami, bertemu"
+36,ちょきんします,貯金します,menabung
+36,すぎます,過ぎます,lewat
+36,なれます,慣れます,terbiasa
+36,くさります,腐ります,membusuk
+36,けんどう,剣道,kendo
+36,じゅうどう,柔道,judo
+36,ラッシュ,—,jam sibuk
+36,うちゅう,宇宙,luar angkasa
+36,きょく,曲,"lagu, musik"
+36,まいしゅう,毎週,setiap minggu
+36,まいつき,毎月,setiap bulan
+36,まいとし,毎年,setiap tahun
+36,このごろ,—,akhir-akhir ini
+36,やっと,—,akhirnya
+36,かなり,—,"cukup, lumayan"
+36,かならず,必ず,pasti
+36,ぜったいに,絶対に,benar-benar
+36,じょうずに,上手に,dengan mahir
+36,できるだけ,—,sebisa mungkin
+36,ほとんど,—,hampir
+36,とくに,特に,terutama
+36,ストレス,—,stres
+36,いかいん,委員,anggota komite
+36,～いん,～員,anggota ～
+36,しゅうかん,習慣,kebiasaan
+36,けいけん,経験,pengalaman
+36,ちしき,知識,pengetahuan
+36,ほうそう,放送,siaran
+36,せいかつ,生活,kehidupan
+37,ほめます,褒めます,memuji
+37,しかります,叱ります,memarahi
+37,さそいます,誘います,mengajak
+37,しょうたいします,招待します,mengundang
+37,たのみます,頼みます,meminta
+37,ほんやくします,翻訳します,menerjemahkan
+37,はつめいします,発明します,menciptakan
+37,はっけんします,発見します,menemukan
+37,デザインします,—,mendesain
+37,うみ,海,laut
+37,ドライブ,—,berkendara
+37,おんせん,温泉,pemandian air panas
+37,たいしかん,大使館,kedutaan besar
+37,ぐあい,具合,kondisi
+37,いみ,意味,arti
+37,おしらせ,お知らせ,pemberitahuan
+37,しょうせつ,小説,novel
+37,マンガ,—,manga
+37,じしょ,辞書,kamus
+37,きょうみ,興味,minat
+37,じょうほう,情報,informasi
+37,ぶんぽう,文法,tata bahasa
+37,はつおん,発音,pelafalan
+37,しつもん,質問,pertanyaan
+37,こたえ,答え,jawaban
+37,れい,例,contoh
+37,かいわ,会話,percakapan
+37,しゅくだい,宿題,pekerjaan rumah
+37,しけん,試験,ujian
+37,せつめい,説明,penjelasan
+38,さんかします,参加します,ikut serta
+38,そだてます,育てます,membesarkan
+38,はこびます,運びます,mengangkut
+38,にゅういんします,入院します,dirawat di rumah sakit
+38,たいいんします,退院します,keluar rumah sakit
+38,いれます,入れます,menyalakan
+38,きります,切ります,mematikan
+38,うそをつきます,嘘をつきます,berbohong
+38,コピーします,—,menyalin
+38,でんき,電気,listrik
+38,エアコン,—,AC
+38,パスポート,—,paspor
+38,なまえ,名前,nama
+38,じゅうしょ,住所,alamat
+38,ちず,地図,peta
+38,しお,塩,garam
+38,さとう,砂糖,gula
+38,よみかた,読み方,cara membaca
+38,～かた,～方,cara ～
+38,ゆめ,夢,mimpi
+38,てんき,天気,cuaca
+38,しあい,試合,pertandingan
+38,いけん,意見,pendapat
+38,はなし,話,cerita
+38,ちきゅう,地球,bumi
+38,つき,月,bulan
+38,さいきん,最近,akhir-akhir ini
+38,たぶん,多分,mungkin
+38,きっと,—,pasti
+38,ほんとうに,本当に,sungguh
+39,こたえます,答えます,menjawab
+39,たおれます,倒れます,roboh
+39,とおります,通ります,melewati
+39,しにます,死にます,meninggal
+39,びっくりします,—,terkejut
+39,がっかりします,—,kecewa
+39,あんしんします,安心します,lega
+39,りこんします,離婚します,bercerai
+39,ふくざつ,複雑,rumit
+39,じゃま,邪魔,mengganggu
+39,きたない,汚い,kotor
+39,うれしい,嬉しい,senang
+39,かなしい,悲しい,sedih
+39,はずかしい,恥ずかしい,malu
+39,じしん,地震,gempa bumi
+39,だいじ,大事,penting
+39,じょうたい,状態,keadaan
+39,じこ,事故,kecelakaan
+39,ちゅうしゃ,注射,suntikan
+39,けが,怪我,luka
+39,せきにん,責任,tanggung jawab
+39,もんだい,問題,masalah
+39,こたえ,答え,jawaban
+39,しんぱい,心配,khawatir
+39,せつめい,説明,penjelasan
+39,れんらく,連絡,kontak
+39,じゅんび,準備,persiapan
+39,ようい,用意,persiapan
+39,ひつよう,必要,perlu
+39,しっぱい,失敗,kegagalan
+40,かぞえます,数えます,menghitung
+40,はかります,測ります . 量ります,mengukur
+40,たしかめます,確かめます,memastikan
+40,あいます,合います,cocok
+40,しゅっぱつします,出発します,berangkat
+40,とうちゃくします,到着します,tiba
+40,よいます,酔います,mabuk
+40,そうだんします,相談します,berkonsultasi
+40,よびます,呼びます,memanggil
+40,かえします,返します,mengembalikan
+40,たすかります,助かります,tertolong
+40,うごきます,動きます,bergerak
+40,にげます,逃げます,melarikan diri
+40,さわぎます,騒ぎます,ribut
+40,あきらめます,諦めます,menyerah
+40,なげます,投げます,melempar
+40,まもります,守ります,melindungi
+40,しらせます,知らせます,memberitahukan
+40,ちゅういします,注意します,berhati-hati
+40,せき,席,kursi/tempat duduk
+40,マナー,—,tata krama
+40,ルール,—,aturan
+40,ひょうしき,標識,rambu
+40,きそく,規則,peraturan
+40,しようきんし,使用禁止,dilarang digunakan
+40,たちいりきんし,立入禁止,dilarang masuk
+40,いりぐち,入り口,pintu masuk
+40,でぐち,出口,pintu keluar
+40,ひじょうぐち,非常口,pintu darurat
+40,むりょう,無料,gratis
+41,いただきます,—,menerima (rendah hati)
+41,くださいます,—,memberi (hormat)
+41,やります,—,memberi
+41,あげます,上げます,menaikkan
+41,さげます,下げます,menurunkan
+41,しんせつにします,親切にします,bersikap baik
+41,かわいい,—,lucu
+41,めずらしい,珍しい,langka
+41,おいわい,お祝い,ucapan selamat/hadiah
+41,おとしだま,お年玉,uang tahun baru
+41,おみまい,お見舞い,kunjungan orang sakit
+41,きょうみ,興味,minat
+41,じょうほう,情報,informasi
+41,ぶんぽう,文法,tata bahasa
+41,はつおん,発音,pelafalan
+41,しつもん,質問,pertanyaan
+41,こたえ,答え,jawaban
+41,れい,例,contoh
+41,かいわ,会話,percakapan
+41,しゅくだい,宿題,pekerjaan rumah
+41,しけん,試験,ujian
+41,せつめい,説明,penjelasan
+41,きもち,気持ち,perasaan
+41,しあわせ,幸せ,bahagia
+41,あんしん,安心,lega
+41,うれしい,嬉しい,senang
+41,かなしい,悲しい,sedih
+41,はずかしい,恥ずかしい,malu
+41,たのしい,楽しい,menyenangkan
+41,だいじ,大事,penting
+42,つつみます,包みます,membungkus
+42,わかします,沸かします,merebus
+42,まぜます,混ぜます,mencampur
+42,けいさんします,計算します,menghitung
+42,ならびます,並びます,berbaris
+42,じょうぶ,丈夫,kuat
+42,べんごし,弁護士,pengacara
+42,おんがくか,音楽家,musisi
+42,こどもたち,子どもたち,anak-anak
+42,しぜん,自然,alam
+42,きょういく,教育,pendidikan
+42,ぶんか,文化,budaya
+42,しゃかい,社会,masyarakat
+42,けいざい,経済,ekonomi
+42,せいじ,政治,politik
+42,れきし,歴史,sejarah
+42,かがく,科学,ilmu pengetahuan
+42,ぎじゅつ,技術,teknologi
+42,じんこう,人口,populasi
+42,こうつう,交通,transportasi
+42,こうがい,公害,polusi
+42,へいわ,平和,perdamaian
+42,せかい,世界,dunia
+42,こっか,国家,negara
+42,けんきゅう,研究,penelitian
+42,はつめい,発明,penemuan
+42,はっけん,発見,penemuan
+42,じょうほう,情報,informasi
+42,でんし,電子,elektronik
+42,けいたい,携帯,ponsel
+43,ふえます,増えます,bertambah
+43,へります,減ります,berkurang
+43,あがります,上がります,naik
+43,さがります,下がります,turun
+43,きれます,切れます,putus
+43,おちます,落ちます,jatuh
+43,なくなります,無くなります,habis
+43,しあわせ,幸せ,bahagia
+43,ふべん,不便,tidak praktis
+43,べんり,便利,praktis
+43,ゆうめい,有名,terkenal
+43,にぎやか,賑やか,ramai
+43,しずか,静か,tenang
+43,あんぜん,安全,aman
+43,きけん,危険,berbahaya
+43,せいかつ,生活,kehidupan
+43,ぶっか,物価,harga barang
+43,きゅうりょう,給料,gaji
+43,じんこう,人口,populasi
+43,こうつう,交通,transportasi
+43,しぜん,自然,alam
+43,くうき,空気,udara
+43,みず,水,air
+43,でんき,電気,listrik
+43,ガス,—,gas
+43,インターネット,—,internet
+43,テレビ,—,televisi
+43,ラジオ,—,radio
+43,でんわ,電話,telepon
+43,れいぼう,冷房,pendingin ruangan
+44,なきます,泣きます,menangis
+44,わらいます,笑います,tertawa
+44,ねむります,眠ります,tidur
+44,かわきます,乾きます,mengering
+44,ぬれます,濡れます,basah
+44,すべります,滑ります,licin
+44,おきます,起きます,terjadi
+44,ちょうせつします,調節します,mengatur
+44,あんしんします,安心します,merasa lega
+44,かんどうします,感動します,terharu
+44,びっくりします,—,terkejut
+44,がっかりします,—,kecewa
+44,こしょうします,故障します,rusak
+44,なおします,直します,memperbaiki
+44,うごきます,動きます,bergerak
+44,とまります,止まります,berhenti
+44,でます,出ます,keluar
+44,はいります,入ります,masuk
+44,つきます,点きます,menyala
+44,きえます,消えます,padam
+44,あきます,開きます,terbuka
+44,しまります,閉まります,tertutup
+44,こわれます,壊れます,rusak
+44,やぶれます,破れます,robek
+44,おれます,折れます,patah
+44,われます,割れます,pecah
+44,よごれます,汚れます,kotor
+44,なくなります,無くなります,hilang
+44,こまります,困ります,kesulitan
+44,だいじょうぶ,大丈夫,tidak apa-apa
+45,しんじます,信じます,percaya
+45,キャンセルします,—,membatalkan
+45,しらせます,知らせます,memberitahukan
+45,ほしょうしょ,保証書,kartu garansi
+45,りょうしゅうしょ,領収書,kuitansi
+45,キャンプ,—,berkemah
+45,ちゅうし,中止,pembatalan
+45,てんきん,転勤,mutasi kerja
+45,こと,事,hal/perkara
+45,うわさ,噂,rumor
+45,せわ,世話,bantuan/perawatan
+45,だいじょうぶ,大丈夫,tidak apa-apa
+45,ほんとう,本当,benar
+45,うそ,嘘,bohong
+45,あんしん,安心,lega
+45,きけん,危険,berbahaya
+45,あんぜん,安全,aman
+45,ひつよう,必要,perlu
+45,たいせつ,大切,penting
+45,むだ,無駄,sia-sia
+45,じゆう,自由,bebas
+45,べんり,便利,praktis
+45,ふべん,不便,tidak praktis
+45,ゆうめい,有名,terkenal
+45,しんせつ,親切,baik hati
+45,げんき,元気,"sehat, semangat"
+45,しずか,静か,tenang
+45,にぎやか,賑やか,ramai
+45,きれい,綺麗,"bersih, cantik"
+45,すてき,素敵,"indah, bagus"
+46,わたします,渡します,menyerahkan
+46,かえってきます,帰って来ます,pulang kembali
+46,でます,出ます,berangkat
+46,とどきます,届きます,sampai
+46,にゅうがくします,入学します,masuk sekolah
+46,そつぎょうします,卒業します,lulus
+46,やきます,焼きます,membakar
+46,やけます,焼けます,terbakar
+46,やきます,焼きます,memanggang
+46,とります,取ります,mengambil
+46,いれます,入れます,memasukkan
+46,だします,出します,mengeluarkan
+46,はこびます,運びます,mengangkut
+46,おくります,送ります,mengirim
+46,しょうかいします,紹介します,memperkenalkan
+46,あんないします,案内します,memandu
+46,せつめいします,説明します,menjelaskan
+46,れんらくします,連絡します,menghubungi
+46,じゅんびします,準備します,mempersiapkan
+46,よやくします,予約します,reservasi
+46,ちゅうもんします,注文します,memesan
+46,へんじします,返事します,membalas
+46,しゅっぱつします,出発します,berangkat
+46,とうちゃくします,到着します,tiba
+46,かいぎ,会議,rapat
+46,じゅぎょう,授業,pelajaran
+46,しけん,試験,ujian
+46,てんらんかい,展覧会,pameran
+46,りょこう,旅行,perjalanan
+46,パーティー,—,pesta
+47,ふきます,吹きます,bertiup
+47,もえます,燃えます,terbakar
+47,なくなります,亡くなります,meninggal
+47,あつまります,集まります,berkumpul
+47,わかれます,別れます,berpisah
+47,きびしい,厳しい,keras
+47,こわい,怖い,takut
+47,あんぜん,安全,aman
+47,きけん,危険,berbahaya
+47,だいじ,大事,penting
+47,しんぱい,心配,khawatir
+47,あんしん,安心,lega
+47,じこ,事故,kecelakaan
+47,じしん,地震,gempa bumi
+47,かじ,火事,kebakaran
+47,たいふう,台風,topan
+47,つなみ,津波,tsunami
+47,ひなんします,避難します,mengungsi
+47,たすけます,助けます,menolong
+47,まもります,守ります,melindungi
+47,しにます,死にます,meninggal
+47,けがをします,怪我をします,terluka
+47,こわれます,壊れます,rusak
+47,おれます,折れます,patah
+47,われます,割れます,pecah
+47,やぶれます,破れます,robek
+47,とまります,止まります,berhenti
+47,きえます,消えます,padam
+47,つきます,点きます,menyala
+47,うごきます,動きます,bergerak
+48,おろします,降ろします . 下ろします,menurunkan
+48,とどけます,届けます,mengantarkan
+48,せわをします,世話をします,merawat
+48,ろくおんします,録音します,merekam
+48,いや,嫌,tidak suka
+48,じゅく,塾,bimbingan belajar
+48,せいと,生徒,murid
+48,しょうがっこう,小学校,sekolah dasar
+48,ちゅうがっこう,中学校,sekolah menengah pertama
+48,こうこう,高校,sekolah menengah atas
+48,だいがく,大学,universitas
+48,せんせい,先生,guru
+48,がくせい,学生,mahasiswa
+48,べんきょう,勉強,belajar
+48,しゅくだい,宿題,pekerjaan rumah
+48,しけん,試験,ujian
+48,もんだい,問題,soal/masalah
+48,こたえ,答え,jawaban
+48,せいせき,成績,nilai
+48,ごうかく,合格,lulus
+48,しっぱい,失敗,gagal
+48,れんしゅう,練習,latihan
+48,はっぴょう,発表,presentasi
+48,けいけん,経験,pengalaman
+48,ちしき,知識,pengetahuan
+48,ぎじゅつ,技術,keterampilan/teknologi
+48,じゅぎょう,授業,pelajaran
+48,きょうしつ,教室,ruang kelas
+48,としょかん,図書館,perpustakaan
+48,じむしつ,事務室,kantor administrasi
+49,りようします,利用します,menggunakan
+49,つとめます,勤めます,bekerja
+49,かけます,掛けます,duduk
+49,すごします,過ごします,menghabiskan waktu
+49,いらっしゃいます,—,"datang, pergi, ada"
+49,めしあがります,召し上がります,"makan, minum"
+49,おっしゃいます,—,berkata
+49,なさいます,—,melakukan
+49,ごらんになります,ご覧になります,melihat
+49,ごぞんじです,ご存じです,mengetahui
+49,おすまいです,お住まいです,tinggal
+49,かえります,帰ります,pulang
+49,でかけます,出かけます,pergi keluar
+49,よびます,呼びます,memanggil
+49,まちます,待ちます,menunggu
+49,あいます,会います,bertemu
+49,はなします,話します,berbicara
+49,ききます,聞きます,mendengar
+49,よみます,読みます,membaca
+49,かきます,書きます,menulis
+49,みせます,見せます,memperlihatkan
+49,かします,貸します,meminjamkan
+49,かります,借ります,meminjam
+49,おしえます,教えます,mengajar/memberi tahu
+49,てつだいます,手伝います,membantu
+49,つれていきます,連れて行きます,mengajak pergi
+49,あんないします,案内します,memandu
+49,しょうかいします,紹介します,memperkenalkan
+49,せつめいします,説明します,menjelaskan
+49,しつれいします,失礼します,permisi
+50,まいります,参ります,"pergi, datang"
+50,おります,居ります,berada
+50,いただきます,頂きます,menerima
+50,もうします,申します,"berkata, bernama"
+50,いたします,致します,melakukan
+50,はいけんします,拝見します,melihat
+50,ぞんじます,存じます,tahu
+50,うかがいます,伺います,berkunjung
+50,おめにかかります,お目にかかります,bertemu
+50,ございます,—,ada
+50,わたくし,私,saya
+50,～でございます,—,adalah ～
+50,おります,居ります,tinggal/ada
+50,いたします,致します,melakukan
+50,もうしあげます,申し上げます,mengatakan
+50,はいしゃくします,拝借します,meminjam
+50,うかがいます,伺います,mendengar/bertanya
+50,いただけますか,—,bisakah saya menerima
+50,かしこまりました,—,"baik, mengerti"
+50,しょうしょうおまちください,少々お待ちください,mohon tunggu sebentar
+50,おまたせしました,お待たせしました,maaf telah menunggu
+50,しつれいいたします,失礼いたします,permisi
+50,よろしくおねがいいたします,宜しくお願いいたします,mohon bantuannya
+50,こちらこそ,—,saya juga
+50,もうしわけありません,申し訳ありません,mohon maaf
+50,ありがとうございます,有難うございます,terima kasih
+50,どういたしまして,—,sama-sama
+50,おせわになっております,お世話になっております,terima kasih atas bantuannya
+50,けいご,敬語,bahasa hormat
+50,ていねいご,丁寧語,bahasa sopan

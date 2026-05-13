@@ -1,0 +1,220 @@
+﻿一,いち,ひと,satu
+二,に,ふた,dua
+三,さん,みっ,tiga
+四,し,よん,empat
+五,ご,いつ,lima
+六,ろく,むっ,enam
+七,しち,なな,tujuh
+八,はち,やっ,delapan
+九,きゅう,ここの,sembilan
+十,じゅう,とお,sepuluh
+百,ひゃく,—,seratus
+千,せん,—,seribu
+万,まん,—,sepuluh ribu
+円,えん,まる,"yen, lingkaran"
+時,じ,とき,"waktu, jam"
+分,ふん,わ,"menit, bagian"
+半,はん,なか,setengah
+今,こん,いま,sekarang
+毎,まい,—,setiap
+年,ねん,とし,tahun
+月,げつ,つき,bulan
+週,しゅう,—,minggu
+日,にち,ひ,"hari, matahari"
+曜,よう,—,hari dalam minggu
+間,かん,あいだ,interval
+上,じょう,うえ,atas
+下,か,した,bawah
+中,ちゅう,なか,tengah
+外,がい,そと,luar
+東,とう,ひがし,timur
+西,せい,にし,barat
+南,なん,みなみ,selatan
+北,ほく,きた,utara
+左,さ,ひだり,kiri
+右,う,みぎ,kanan
+前,ぜん,まえ,depan
+後,ご,うし,"belakang, setelah"
+内,ない,うち,dalam
+近,きん,ちか,dekat
+遠,えん,とお,jauh
+場,じょう,ば,tempat
+所,しょ,ところ,tempat
+国,こく,くに,negara
+地,ち,—,"tanah, bumi"
+道,どう,みち,jalan
+駅,えき,—,stasiun
+店,てん,みせ,toko
+社,しゃ,やしろ,perusahaan
+屋,おく,や,"toko, atap"
+室,しつ,むろ,ruangan
+家,か,いえ,rumah
+人,じん,ひと,orang
+子,し,こ,anak
+女,じょ,おんな,wanita
+男,だん,おとこ,pria
+父,ふ,ちち,ayah
+母,ぼ,はは,ibu
+兄,けい,あに,kakak laki-laki
+姉,し,あね,kakak perempuan
+弟,てい,おとうと,adik laki-laki
+妹,まい,いもうと,adik perempuan
+友,ゆう,とも,teman
+体,たい,からだ,tubuh
+頭,とう,あたま,kepala
+顔,がん,かお,wajah
+目,もく,め,mata
+耳,じ,みみ,telinga
+口,こう,くち,mulut
+手,しゅ,て,tangan
+足,そく,あし,kaki
+心,しん,こころ,hati
+学,がく,まな,belajar
+校,こう,—,sekolah
+生,せい,い,hidup
+先,せん,さき,sebelumnya
+文,ぶん,ふみ,tulisan
+字,じ,あざ,huruf
+本,ほん,もと,"buku, asal"
+語,ご,かた,bahasa
+読,どく,よ,membaca
+書,しょ,か,menulis
+聞,ぶん,き,mendengar
+話,わ,はな,berbicara
+言,げん,い,berkata
+問,もん,と,pertanyaan
+題,だい,—,"topik, soal"
+答,とう,こた,jawaban
+意,い,—,niat
+味,み,あじ,rasa
+教,きょう,おし,mengajar
+勉,べん,—,rajin
+強,きょう,つよ,kuat
+習,しゅう,なら,belajar
+練,れん,ね,latihan
+試,し,こころ,ujian
+験,けん,—,pengalaman
+行,こう,い,pergi
+来,らい,く,datang
+帰,き,かえ,pulang
+入,にゅう,はい,masuk
+出,しゅつ,で,keluar
+会,かい,あ,bertemu
+見,けん,み,melihat
+食,しょく,た,makan
+飲,いん,の,minum
+買,ばい,か,membeli
+売,ばい,う,menjual
+作,さく,つく,membuat
+使,し,つか,menggunakan
+待,たい,ま,menunggu
+持,じ,も,membawa
+住,じゅう,す,tinggal
+始,し,はじ,mulai
+終,しゅう,お,selesai
+開,かい,あ,membuka
+閉,へい,し,menutup
+起,き,お,bangun
+寝,しん,ね,tidur
+働,どう,はたら,bekerja
+休,きゅう,やす,istirahat
+歩,ほ,ある,berjalan
+走,そう,はし,berlari
+止,し,と,berhenti
+乗,じょう,の,naik kendaraan
+降,こう,お,turun
+切,せつ,き,memotong
+洗,せん,あら,mencuci
+天,てん,あま,langit
+気,き,—,"energi, udara"
+雨,う,あめ,hujan
+雪,せつ,ゆき,salju
+風,ふう,かぜ,angin
+空,くう,そら,langit
+海,かい,うみ,laut
+川,せん,かわ,sungai
+山,さん,やま,gunung
+火,か,ひ,api
+水,すい,みず,air
+木,もく,き,pohon
+金,きん,かね,"emas, uang"
+土,ど,つち,tanah
+花,か,はな,bunga
+大,だい,おお,besar
+小,しょう,ちい,kecil
+多,た,おお,banyak
+少,しょう,すく,sedikit
+長,ちょう,なが,panjang
+高,こう,たか,"tinggi, mahal"
+安,あん,やす,"murah, aman"
+新,しん,あたら,baru
+古,こ,ふる,lama
+良,りょう,よ,baik
+悪,あく,わる,buruk
+楽,らく,たの,senang
+好,こう,す,suka
+有,ゆう,あ,"ada, memiliki"
+名,めい,な,nama
+元,げん,もと,asal
+同,どう,おな,sama
+別,べつ,わか,berbeda
+不,ふ,—,tidak
+便,べん,たよ,praktis
+利,り,き,keuntungan
+静,せい,しず,tenang
+変,へん,か,"berubah, aneh"
+親,しん,おや,"orang tua, akrab"
+幸,こう,しあわ,bahagia
+車,しゃ,くるま,mobil
+電,でん,—,listrik
+話,わ,はな,bicara
+銀,ぎん,—,perak
+病,びょう,や,sakit
+院,いん,—,institusi
+医,い,—,medis
+者,しゃ,もの,orang
+工,こう,—,teknik
+業,ぎょう,わざ,pekerjaan
+旅,りょ,たび,perjalanan
+館,かん,やかた,gedung
+写,しゃ,うつ,foto
+真,しん,ま,benar
+映,えい,うつ,pantulan
+画,が,え,gambar
+音,おん,おと,suara
+楽,がく,たの,"musik, senang"
+歌,か,うた,lagu
+料,りょう,—,biaya
+理,り,—,logika
+旅,りょ,たび,perjalanan
+注,ちゅう,そそ,"menuang, perhatian"
+意,い,—,niat
+必,ひつ,かなら,pasti
+要,よう,かなめ,perlu
+約,やく,—,janji
+材,ざい,—,bahan
+料,りょう,—,"bahan, biaya"
+予,よ,あらかじ,sebelumnya
+定,てい,さだ,menentukan
+準,じゅん,—,persiapan
+備,び,そな,persiapan
+説,せつ,と,menjelaskan
+明,めい,あか,terang
+連,れん,つら,berhubungan
+絡,らく,から,hubungan
+相,そう,あい,saling
+談,だん,—,diskusi
+放,ほう,はな,melepaskan
+送,そう,おく,mengirim
+運,うん,はこ,mengangkut
+転,てん,ころ,berputar
+勤,きん,つと,bekerja
+仕,し,つか,melayani
+事,じ,こと,"hal, pekerjaan"
+結,けつ,むす,mengikat
+婚,こん,—,pernikahan
+式,しき,—,upacara
+経,けい,へ,pengalaman
+済,さい,す,selesai
+政,せい,まつりごと,politik
+治,ち,おさ,memerintah
