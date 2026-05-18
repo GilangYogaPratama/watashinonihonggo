@@ -265,6 +265,22 @@
 
         ruby rt { color: var(--primary); display: none; }
         .show-furigana ruby rt { display: ruby-text; }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            .header-section { margin-bottom: 1.5rem; }
+            .flashcard-container { height: 380px; margin-bottom: 1.5rem; }
+            .card-face { padding: 1.5rem; }
+            .japanese-pattern { font-size: 1.8rem !important; }
+            .meaning { font-size: 1rem; margin-top: 1rem; }
+            .example-jp { font-size: 1.1rem; }
+            .example-id { font-size: 0.85rem; }
+            .controls { gap: 0.5rem; }
+            .btn-action { padding: 0.8rem 0.5rem; font-size: 0.65rem; }
+            .btn-master { bottom: 1rem; left: 1rem; font-size: 0.65rem; padding: 4px 10px; }
+            .furi-toggle { bottom: 1rem; right: 1rem; font-size: 0.65rem; padding: 4px 10px; }
+            .progress-section { margin-top: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -272,13 +288,13 @@
     <div class="container">
         <nav class="nav-header">
             <a href="{{ route('home') }}" class="nav-back"><- BACK_TO_SYNC</a>
-            <div class="mode-toggle" onclick="toggleMode()">
+            <div class="mode-toggle" style="font-family: 'Orbitron';" onclick="toggleMode()">
                 <span id="modeText">MODE: JP -> ID</span>
             </div>
         </nav>
         <div class="header-section">
-            <h1>BUNPO_N4</h1>
-            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted)">ANALYSIS_ONGOING</div>
+            <h1 style="font-family: 'Orbitron';">BUNPO_N4</h1>
+            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted); font-family: 'Orbitron'; font-weight: 700;">ANALYSIS_ONGOING</div>
         </div>
         <div class="flashcard-container">
             <div class="flashcard" id="flashcard" onclick="toggleReveal()">
@@ -300,14 +316,14 @@
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         INGAT
                     </button>
-                    <div class="furi-toggle" id="furiBtn" onclick="event.stopPropagation(); toggleFurigana()">FURIGANA: OFF</div>
+                    <div class="furi-toggle" id="furiBtn" style="font-family: 'Orbitron';" onclick="event.stopPropagation(); toggleFurigana()">FURIGANA: OFF</div>
                 </div>
             </div>
         </div>
         <div class="controls">
-            <button class="btn-action" onclick="prevCard()">PREV</button>
-            <button class="btn-action btn-reveal" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
-            <button class="btn-action" onclick="nextCard()">NEXT</button>
+            <button class="btn-action" style="font-family: 'Orbitron';" onclick="prevCard()">PREV</button>
+            <button class="btn-action btn-reveal" style="font-family: 'Orbitron';" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
+            <button class="btn-action" style="font-family: 'Orbitron';" onclick="nextCard()">NEXT</button>
         </div>
         <div class="progress-section">
             <div class="progress-info">

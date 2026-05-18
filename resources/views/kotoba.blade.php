@@ -266,6 +266,22 @@
             font-weight: 700;
             border-bottom: 4px solid var(--accent-yellow);
         }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            .header-section { margin-bottom: 1.5rem; }
+            .flashcard-container { height: 330px; margin-bottom: 1.5rem; }
+            .card-face { padding: 1.5rem; }
+            .japanese-word { font-size: 2.5rem !important; }
+            .reading { font-size: 1.2rem; }
+            .meaning { font-size: 1rem; padding: 0.8rem 1rem; margin-top: 1rem; }
+            .controls { gap: 0.5rem; }
+            .btn-action { padding: 0.8rem 0.5rem; font-size: 0.65rem; }
+            .btn-master { bottom: 1rem; left: 1rem; font-size: 0.65rem; padding: 4px 10px; }
+            .bab-tag { top: 1rem; left: 1rem; font-size: 0.65rem; padding: 3px 8px; }
+            .bab-filter-section { margin-top: 1.5rem; }
+            .bab-btn { padding: 4px 8px; font-size: 0.6rem; }
+        }
     </style>
 </head>
 <body>
@@ -273,26 +289,26 @@
     <div class="container">
         <nav class="nav-header">
             <a href="{{ route('home') }}" class="nav-back"><- BACK_TO_SYNC</a>
-            <div class="mode-toggle" onclick="toggleMode()">
+            <div class="mode-toggle" style="font-family: 'Orbitron';" onclick="toggleMode()">
                 <span id="modeText">MODE: JP -> ID</span>
             </div>
         </nav>
         <div class="header-section">
-            <h1>KOTOBA_N4</h1>
-            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted)">LEXICAL_FEED_ACTIVE</div>
+            <h1 style="font-family: 'Orbitron';">KOTOBA_N4</h1>
+            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted); font-family: 'Orbitron'; font-weight: 700;">ANALYSIS_ONGOING</div>
         </div>
         <div class="flashcard-container">
             <div class="flashcard" id="flashcard" onclick="toggleReveal()">
                 <div class="card-face front">
                     <div class="accent-tl"></div><div class="accent-br"></div>
                     <div class="accent-yellow-top"></div>
-                    <div class="bab-tag" id="babTagFront">BAB 00</div>
+                    <div class="bab-tag" id="babTagFront" style="font-family: 'Orbitron';">BAB 00</div>
                     <div class="japanese-word" id="wordFront">---</div>
                 </div>
                 <div class="card-face back">
                     <div class="accent-tl"></div><div class="accent-br"></div>
                     <div class="accent-yellow-top"></div>
-                    <div class="bab-tag" id="babTagBack">BAB 00</div>
+                    <div class="bab-tag" id="babTagBack" style="font-family: 'Orbitron';">BAB 00</div>
                     <div class="reading" id="readingBack">---</div>
                     <div class="japanese-word" id="wordBack" style="font-size: 2.5rem; color: var(--primary);">---</div>
                     <div class="meaning" id="meaningBack">---</div>
@@ -304,9 +320,9 @@
             </div>
         </div>
         <div class="controls">
-            <button class="btn-action" onclick="prevCard()">PREV</button>
-            <button class="btn-action btn-reveal" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
-            <button class="btn-action" onclick="nextCard()">NEXT</button>
+            <button class="btn-action" style="font-family: 'Orbitron';" onclick="prevCard()">PREV</button>
+            <button class="btn-action btn-reveal" style="font-family: 'Orbitron';" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
+            <button class="btn-action" style="font-family: 'Orbitron';" onclick="nextCard()">NEXT</button>
         </div>
         <div class="progress-section">
             <div class="progress-info">
@@ -318,7 +334,7 @@
 
         <div class="bab-filter-section">
             <div class="bab-filter-label">
-                <span>Target_Chapter_Select</span>
+                <span>Pilih Bab/Modul</span>
                 <span class="reset-link" onclick="resetMastery()">RESET PROGRESS</span>
             </div>
             <div class="bab-grid" id="babGrid">
@@ -354,7 +370,7 @@
             
             const allBtn = document.createElement('button');
             allBtn.className = 'bab-btn active';
-            allBtn.textContent = 'ALL';
+            allBtn.textContent = 'Semua';
             allBtn.onclick = () => filterByBab('all');
             babGrid.appendChild(allBtn);
 
@@ -391,7 +407,7 @@
 
             if (remaining.length === 0 && filtered.length > 0) {
                 // All mastered in this set, auto-reset for this set
-                alert("Selamat! Semua kartu di bagian ini telah diingat. Progress akan direset.");
+                alert("Selamat! Semua kosakata di bab ini telah diingat. Progress akan direset.");
                 masteredIds = masteredIds.filter(id => !filtered.map(f => f.id).includes(id));
                 localStorage.setItem('mastered_kotoba_n4', JSON.stringify(masteredIds));
                 remaining = filtered;

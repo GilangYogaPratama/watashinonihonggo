@@ -244,6 +244,21 @@
         }
 
         .btn-master:hover { opacity: 0.9; transform: scale(1.05); }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            .header-section { margin-bottom: 1.5rem; }
+            .flashcard-container { height: 360px; margin-bottom: 1.5rem; }
+            .card-face { padding: 1.5rem; }
+            .kanji-char { font-size: 4.5rem; }
+            .reading-val { font-size: 1.1rem; }
+            .reading-row { gap: 1rem; }
+            .meaning { font-size: 1.1rem; padding: 0.8rem 1rem; }
+            .controls { gap: 0.5rem; }
+            .btn-action { padding: 0.8rem 0.5rem; font-size: 0.65rem; }
+            .btn-master { bottom: 1rem; left: 1rem; font-size: 0.65rem; padding: 4px 10px; }
+            .progress-section { margin-top: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -253,8 +268,8 @@
             <a href="{{ route('home') }}" class="nav-back"><- BACK_TO_SYNC</a>
         </nav>
         <div class="header-section">
-            <h1>KANJI_N4</h1>
-            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted)">VISUAL_DATA_ACTIVE</div>
+            <h1 style="font-family: 'Orbitron';">KANJI_N4</h1>
+            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted); font-family: 'Orbitron'; font-weight: 700;">ANALYSIS_ONGOING</div>
         </div>
         <div class="flashcard-container">
             <div class="flashcard" id="flashcard" onclick="toggleReveal()">
@@ -281,9 +296,9 @@
             </div>
         </div>
         <div class="controls">
-            <button class="btn-action" onclick="prevCard()">PREV</button>
-            <button class="btn-action btn-reveal" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
-            <button class="btn-action" onclick="nextCard()">NEXT</button>
+            <button class="btn-action" style="font-family: 'Orbitron';" onclick="prevCard()">PREV</button>
+            <button class="btn-action btn-reveal" style="font-family: 'Orbitron';" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
+            <button class="btn-action" style="font-family: 'Orbitron';" onclick="nextCard()">NEXT</button>
         </div>
         <div class="progress-section">
             <div class="progress-info">

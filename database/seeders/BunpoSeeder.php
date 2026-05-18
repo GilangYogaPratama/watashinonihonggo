@@ -2,93 +2,92 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Bunpo;
 
 class BunpoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
+        Bunpo::truncate();
+
         $bunpos = [
-            // 1. BENTUK DASAR & PERUBAHAN KATA
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～んです / ～のです', 'meaning' => 'menjelaskan alasan, menekankan', 'example' => 'どうして{遅|おく}れたんですか。(Mengapa kamu terlambat?)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～と思います', 'meaning' => 'saya pikir...', 'example' => '{明日|あした}は{雨|あめ}が{降|ふ}ると{思|おも}います。(Saya pikir besok akan hujan.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～と言います', 'meaning' => 'katanya... / disebut...', 'example' => '{彼|かれ}は{明日|あした}{来|こ}ないと{言|い}っていました。(Dia bilang dia tidak akan datang besok.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～すぎます', 'meaning' => 'terlalu...', 'example' => 'このカレーは{辛|から}すぎます。(Kari ini terlalu pedas.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～やすいです / ～にくいです', 'meaning' => 'mudah... / sulit...', 'example' => 'このペンは{書|か}きやすいです。(Pulpen ini mudah digunakan untuk menulis.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～ようになります', 'meaning' => 'menjadi bisa / terbiasa...', 'example' => '{日本語|にほんご}が{話|はな}せるようになりました。(Saya menjadi bisa berbicara bahasa Jepang.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～ようにします', 'meaning' => 'berusaha untuk...', 'example' => '{毎日|まいにち}{野菜|やさい}を{食|た}べるようにしています。(Saya berusaha makan sayur setiap hari.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～ことになります', 'meaning' => 'diputuskan bahwa...', 'example' => '{来月|らいげつ}、{日本|にほん}へ{行|い}くことになりました。(Telah diputuskan bahwa bulan depan saya akan pergi ke Jepang.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～ことにします', 'meaning' => 'memutuskan untuk...', 'example' => '{今日|きょう}からタバコを{辞|や}めることにしました。(Mulai hari ini saya memutuskan untuk berhenti merokok.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～てみます', 'meaning' => 'mencoba...', 'example' => 'この{靴|くつ}を{履|は}いてみます。(Saya akan mencoba memakai sepatu ini.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～ばかりです', 'meaning' => 'hanya...', 'example' => '{彼|かれ}はゲームばかりしています。(Dia hanya bermain game saja.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～しか～ません', 'meaning' => 'tidak selain...', 'example' => '{財布|さいふ}に{百円|ひゃくえん}しかありません。(Di dompet hanya ada 100 yen.)'],
-            ['category' => '1. Bentuk Dasar & Perubahan Kata', 'pattern' => '～まだ～ていません', 'meaning' => 'masih belum...', 'example' => 'まだ{晩ご飯|ばんごはん}を{食|た}べていません。(Saya masih belum makan malam.)'],
+            ['category' => 'Modul 1', 'pattern' => '1. ～んです', 'meaning' => 'Penekanan', 'example' => 'どうして{遅|おく}れたんですか。 (Kenapa terlambat?)'],
+            ['category' => 'Modul 1', 'pattern' => '2. ～いただけませんか', 'meaning' => '"Bisakah Anda... Untuk saya"', 'example' => '{手伝|てつだ}っていただけませんか。 (Bisakah Anda membantu saya?)'],
+            ['category' => 'Modul 1', 'pattern' => '3. ～たらいいです', 'meaning' => 'Sebaiknya', 'example' => 'どうしたらいいですか。 (Sebaiknya bagaimana?)'],
+            ['category' => 'Modul 1', 'pattern' => '4. Potensial (Bisa)', 'meaning' => "I: 待ちます → 待てます\nII: 見ます → 見られます\nIII: します → できます", 'example' => '{日本語|にほんご}が{話|はな}せます。 (Bisa berbicara bahasa Jepang.)'],
+            ['category' => 'Modul 1', 'pattern' => '5. 見えます / 聞こえます', 'meaning' => '"Terlihat" / "Terdengar"', 'example' => '{山|やま}が{見|み}えます。 (Gunung terlihat.)'],
+            ['category' => 'Modul 1', 'pattern' => '6. できます', 'meaning' => '"Bisa", Selesai, dibuat dll', 'example' => 'スーパーができました。 (Supermarket telah selesai dibangun.)'],
+            ['category' => 'Modul 1', 'pattern' => '7. しか / だけ', 'meaning' => "しか: hanya (-)\nだけ: hanya (+)", 'example' => 'ひらがなしか{読|よ}めません。 (Hanya bisa baca hiragana.)'],
+            ['category' => 'Modul 1', 'pattern' => '8. では / には / からは', 'meaning' => 'Penegasan tempat/keberadaan', 'example' => 'この{部屋|へや}ではタバコを{吸|す}わないでください。 (Di ruangan INI tolong jangan merokok.)'],
+            ['category' => 'Modul 1', 'pattern' => '9. ～ながら', 'meaning' => '"Sambil"', 'example' => 'テレビを{見|み}ながら{食事|しょくじ}します。 (Makan sambil menonton TV.)'],
+            ['category' => 'Modul 1', 'pattern' => '10. ～ています', 'meaning' => 'Rutinitas / kejadian sampai sekarang', 'example' => '{私|わたし}は{東京|とうきょう}に{住|す}んでいます。 (Saya tinggal di Tokyo.)'],
+            
+            ['category' => 'Modul 2', 'pattern' => '11. ～し、～し', 'meaning' => 'Dan juga (kelebihan/alasan)', 'example' => 'この{店|みせ}は{安|やす}いし、いいし... (Toko ini murah, bagus, ...)'],
+            ['category' => 'Modul 2', 'pattern' => '12. ～それで', 'meaning' => '"...karena itu makanya"', 'example' => '{雨|あめ}が{降|ふ}りました。それで{行|い}きませんでした。 (Hujan turun. Karena itu saya tidak pergi.)'],
+            ['category' => 'Modul 2', 'pattern' => '13. ～ときは', 'meaning' => 'Penekanan suatu kondisi', 'example' => '{子|こ}どものときは、よく{遊|あそ}びました。 (Saat masih anak-anak, saya sering bermain.)'],
+            ['category' => 'Modul 2', 'pattern' => '14. ～てしまいました / てしまいます', 'meaning' => 'Belum selesai / aksi akan dilakukan', 'example' => 'パスポートを{忘|わす}れてしまいました。 (Saya terlanjur melupakan paspor.)'],
+            ['category' => 'Modul 2', 'pattern' => '15. それ / その / そう', 'meaning' => 'Kata tunjuk kalimat sebelumnya', 'example' => '{明日|あした}テストがあります。それは{難|むずか}しいです。 (Besok ada tes. Itu sulit.)'],
+            ['category' => 'Modul 2', 'pattern' => '16. ありました', 'meaning' => 'Menunjukkan ada (terpampang/waktu)', 'example' => 'あそこにポスターがありました。 (Di sana (tadi) ada poster.)'],
+            ['category' => 'Modul 2', 'pattern' => '17. どこかで / どこかに', 'meaning' => 'Suatu tempat / entah di mana', 'example' => 'どこかに{鍵|かぎ}を{落|お}としました。 (Menjatuhkan kunci entah di mana.)'],
+            ['category' => 'Modul 2', 'pattern' => '18. k.kerja てあります', 'meaning' => 'Di...kan (Keadaan sengaja)', 'example' => '{机|つくえ}の{上|うえ}に{本|ほん}が{置|お}いてあります。 (Buku diletakkan di atas meja.)'],
+            ['category' => 'Modul 2', 'pattern' => '19. k.kerja ておきます', 'meaning' => 'Terlebih dahulu', 'example' => 'パーティーの{前|まえ}に、{部屋|へや}を{掃除|そうじ}しておきます。 (Sebelum pesta, bersihkan kamar terlebih dahulu.)'],
+            ['category' => 'Modul 2', 'pattern' => '20. ～ています', 'meaning' => 'Masih berlangsung', 'example' => 'まだ{雨|あめ}が{降|ふ}っています。 (Hujan masih turun.)'],
 
-            // 2. PERMISSION & LARANGAN
-            ['category' => '2. Permission & Larangan', 'pattern' => '～てもいいです', 'meaning' => 'boleh...', 'example' => '{写真|しゃしん}を{撮|と}ってもいいですか。(Bolehkah mengambil foto?)'],
-            ['category' => '2. Permission & Larangan', 'pattern' => '～てはいけません / ～ちゃいけません', 'meaning' => 'tidak boleh...', 'example' => 'ここでタバコを{吸|す}ってはいけません。(Tidak boleh merokok di sini.)'],
-            ['category' => '2. Permission & Larangan', 'pattern' => '～なくてもいいです', 'meaning' => 'tidak perlu...', 'example' => '{明日|あした}、{学校|がっこう}へ{来|こ}なくてもいいです。(Besok tidak perlu datang ke sekolah.)'],
-            ['category' => '2. Permission & Larangan', 'pattern' => '～なければなりません', 'meaning' => 'harus...', 'example' => '{宿題|しゅくだい}をしなければなりません。(Harus mengerjakan PR.)'],
-            ['category' => '2. Permission & Larangan', 'pattern' => '～なくちゃ / ～なきゃ', 'meaning' => '(harus) versi santai', 'example' => '{早|はや}く{行|い}かなくちゃ。(Harus cepat-cepat pergi.)'],
+            ['category' => 'Modul 3', 'pattern' => '21. とか', 'meaning' => 'Memberikan contoh', 'example' => 'りんごとかみかんとか{買|か}います。 (Membeli apel, jeruk, dll.)'],
+            ['category' => 'Modul 3', 'pattern' => '22. Maksud / Ajakan', 'meaning' => "I: 作ります → 作ろう\nII: 食べます → 食べよう\nIII: します → しよう; 来ます → 来よう", 'example' => '{一緒|いっしょ}に{行|い}こう。 (Ayo pergi bersama.)'],
+            ['category' => 'Modul 3', 'pattern' => '23. ～と思います / と思っています', 'meaning' => 'Baru saja bermaksud / Sudah berniat => "Saya pikir"', 'example' => '{日本|にほん}へ{行|い}こうと{思|おも}っています。 (Saya berniat pergi ke Jepang.)'],
+            ['category' => 'Modul 3', 'pattern' => '24. つもりです', 'meaning' => 'Berniat (Lebih yakin / pasti dari と思っています)', 'example' => '{大学|だいがく}に{入|はい}るつもりです。 (Saya berniat/pasti masuk universitas.)'],
+            ['category' => 'Modul 3', 'pattern' => '25. よていです', 'meaning' => 'Rencananya', 'example' => '{来週|らいしゅう}、{出張|しゅっちょう}する{予定|よてい}です。 (Rencananya saya akan dinas minggu depan.)'],
+            ['category' => 'Modul 3', 'pattern' => '26. まだ ～ていません / ～ません', 'meaning' => 'Sudah ada niat tapi belum / Belum ada niat', 'example' => 'まだ{書|か}いていません。 (Saya masih belum menulisnya.)'],
+            ['category' => 'Modul 3', 'pattern' => '27. ～ほうがいいです', 'meaning' => '"Sebaiknya"', 'example' => '{病院|びょういん}へ{行|い}ったほうがいいです。 (Sebaiknya pergi ke rumah sakit.)'],
+            ['category' => 'Modul 3', 'pattern' => '28. でしょう', 'meaning' => 'Mungkin / sepertinya (kemungkinan tinggi)', 'example' => '{明日|あした}は{雨|あめ}が{降|ふ}るでしょう。 (Besok mungkin hujan.)'],
+            ['category' => 'Modul 3', 'pattern' => '29. かもしれません', 'meaning' => 'Mungkin / bisa jadi (kemungkinan rendah)', 'example' => '{午後|ごご}から{雨|あめ}が{降|ふ}るかもしれません。 (Mungkin siang hari akan hujan.)'],
+            ['category' => 'Modul 3', 'pattern' => '30. bilangan で', 'meaning' => 'Batas jumlah', 'example' => '{三百円|さんびゃくえん}で{買|か}えますか。 (Apakah bisa dibeli dengan batas jumlah 300 yen?)'],
 
-            // 3. KEINGINAN & HARAPAN
-            ['category' => '3. Keinginan & Harapan', 'pattern' => '～たいです', 'meaning' => 'ingin...', 'example' => '{日本|にほん}へ{行|い}きたいです。(Saya ingin pergi ke Jepang.)'],
-            ['category' => '3. Keinginan & Harapan', 'pattern' => '～たがります', 'meaning' => 'kelihatannya ingin...', 'example' => '{子供|こども}がお{菓子|かし}を{食|た}べたがっています。(Anak itu kelihatannya ingin makan kue.)'],
+            ['category' => 'Modul 4', 'pattern' => '31. Perintah', 'meaning' => "I: 書きます → 書け (い->え)\nII: 見ます → 見ろ (ます->ろ)\nIII: します → しろ; 来ます → こい", 'example' => '{早|はや}く{寝|ね}ろ。 (Cepat tidur!)'],
+            ['category' => 'Modul 4', 'pattern' => '32. Larangan', 'meaning' => '行くな (k.kerja kamus + な)', 'example' => 'ここに{入|はい}るな。 (Jangan masuk ke sini!)'],
+            ['category' => 'Modul 4', 'pattern' => '33. k.biasa という意味です', 'meaning' => 'Menjelaskan maksud', 'example' => '「{立|た}入禁止|ちいりきんし}」は{入|はい}るなという{意味|いみ}です。 (Artinya dilarang masuk.)'],
+            ['category' => 'Modul 4', 'pattern' => '34. k.biasa と言っていました', 'meaning' => 'Menyatakan pesan dari orang lain', 'example' => '{彼|かれ}は{明日|あした}{休|やす}むと{言|い}っていました。 (Dia berkata besok dia akan libur.)'],
+            ['category' => 'Modul 4', 'pattern' => '35. ～と伝えていただけませんか', 'meaning' => 'Permintaan untuk menyampaikan pesan', 'example' => '{遅|おく}れると{伝|つた}えていただけませんか。 (Bisakah tolong sampaikan saya terlambat?)'],
+            ['category' => 'Modul 4', 'pattern' => '36. ～とおりに', 'meaning' => 'Sesuai dengan (k.kerja た / k.benda の)', 'example' => '{説明書|せつめいしょ}のとおりに作ります。 (Membuat sesuai dengan buku petunjuk.)'],
+            ['category' => 'Modul 4', 'pattern' => '37. ～た後で / ～の後で', 'meaning' => 'Setelah...', 'example' => '{食事|しょくじ}の{後|あと}で、{薬|くすり}を{飲|の}みます。 (Setelah makan, minum obat.)'],
+            ['category' => 'Modul 4', 'pattern' => '38. Syarat (Kalau)', 'meaning' => "I: 読めば, II: 見れば, III: すれば/くれば\nNegatif: なければ. Sifat い: ければ. Sifat な/Benda: なら\n～と (Otomatis), ～たら (Kalau sudah)", 'example' => '{安|やす}ければ、{買|か}います。 (Kalau murah, saya beli.)'],
+            ['category' => 'Modul 4', 'pattern' => '39. ～ために / ～ように', 'meaning' => 'Supaya... / Untuk...', 'example' => '{合格|ごうかく}するために{勉強|べんきょう}します。 (Belajar supaya lulus.)'],
+            ['category' => 'Modul 4', 'pattern' => '40. ～ようになります', 'meaning' => 'Menjadi bisa', 'example' => '{泳|およ}げるようになりました。 (Sekarang saya menjadi bisa berenang.)'],
 
-            // 4. PENGALAMAN & KONDISI
-            ['category' => '4. Pengalaman & Kondisi', 'pattern' => '～たことがあります', 'meaning' => 'pernah...', 'example' => '{富士山|ふじさん}に{登|のぼ}ったことがあります。(Saya pernah mendaki Gunung Fuji.)'],
-            ['category' => '4. Pengalaman & Kondisi', 'pattern' => '～ています', 'meaning' => 'sedang / kebiasaan / keadaan', 'example' => '{私|わたし}は{東京|とうきょう}に{住|す}んでいます。(Saya tinggal di Tokyo.)'],
-            ['category' => '4. Pengalaman & Kondisi', 'pattern' => '～てしまいます', 'meaning' => 'terlanjur / selesai', 'example' => 'ケーキを{全部|ぜんぶ}{食|た}べてしまいました。(Saya sudah menghabiskan semua kuenya.)'],
-            ['category' => '4. Pengalaman & Kondisi', 'pattern' => '～ておきます', 'meaning' => 'mempersiapkan sebelumnya', 'example' => 'パーティーの{前|まえ}に、{部屋|へや}を{掃除|そうじ}しておきます。(Sebelum pesta, saya membersihkan kamar terlebih dahulu.)'],
+            ['category' => 'Modul 5', 'pattern' => '41. ～ようにします', 'meaning' => 'Saya usahakan', 'example' => '{毎日|まいにち}{運動|うんどう}するようにします。 (Saya usahakan berolahraga setiap hari.)'],
+            ['category' => 'Modul 5', 'pattern' => '42. Pasif', 'meaning' => "I: 読まれる (い->あれる)\nII: 食べられる (ます->られる)\nIII: される / こられる", 'example' => '{先生|せんせい}に{褒|ほめ}られました。 (Saya dipuji oleh guru.)'],
+            ['category' => 'Modul 5', 'pattern' => '43. のは / のが', 'meaning' => 'Sebagai kata benda (k.kerja biasa + の)', 'example' => '{音楽|おんがく}を{聞|き}くのが{好|す}きです。 (Mendengarkan musik adalah kesukaan saya.)'],
+            ['category' => 'Modul 5', 'pattern' => '44. ～て、～で', 'meaning' => '"Karena" (k.kerja, k.sifat, k.benda)', 'example' => '{ニュース|にゅーす}を{聞|き}いて、びっくりしました。 (Saya kaget karena mendengar berita.)'],
+            ['category' => 'Modul 5', 'pattern' => '45. ～ので', 'meaning' => 'Karena (menjelaskan alasan)', 'example' => '{用事|ようじ}があるので、{帰|かえ}ります。 (Karena ada urusan, saya pulang.)'],
+            ['category' => 'Modul 5', 'pattern' => '46. ～途中で', 'meaning' => 'Di tengah-tengah (aktivitas)', 'example' => '{会社|かいしゃ}へ{行|い}く{途中|とちゅう}で、{事故|じこ}がありました。 (Di tengah jalan ke kantor, ada kecelakaan.)'],
+            ['category' => 'Modul 5', 'pattern' => '47. ～か', 'meaning' => 'Menambahkan pertanyaan', 'example' => 'いつ{終|お}わるか、わかりません。 (Saya tidak tahu kapan akan selesainya.)'],
+            ['category' => 'Modul 5', 'pattern' => '48. ～かどうか', 'meaning' => 'Apakah... atau tidak', 'example' => '{行|い}くかどうか、まだわかりません。 (Belum tahu apakah akan pergi atau tidak.)'],
+            ['category' => 'Modul 5', 'pattern' => '49. ～てみます', 'meaning' => 'Mencoba', 'example' => 'このシャツを{着|き}てみます。 (Saya mencoba memakai kemeja ini.)'],
+            ['category' => 'Modul 5', 'pattern' => '50. ～さ', 'meaning' => 'Mengubah k.sifat ke k.benda (高い → 高さ)', 'example' => 'あの{山|やま}の{高|たか}さはどれくらいですか。 (Ketinggian gunung itu kira-kira berapa?)'],
 
-            // 5. MEMBERI & MENERIMA
-            ['category' => '5. Memberi & Menerima', 'pattern' => '～てあげます', 'meaning' => 'melakukan untuk orang lain', 'example' => '{妹|いもうと}に{本|ほん}を{買|か}ってあげました。(Saya membelikan buku untuk adik perempuan.)'],
-            ['category' => '5. Memberi & Menerima', 'pattern' => '～てもらいます', 'meaning' => 'menerima bantuan', 'example' => '{友達|ともだち}に{手伝|てつだ}ってもらいました。(Saya dibantu oleh teman.)'],
-            ['category' => '5. Memberi & Menerima', 'pattern' => '～てくれます', 'meaning' => 'orang lain melakukan untuk saya', 'example' => '{先生|せんせい}が{日本語|にほんご}を{教|おし}えてくれました。(Guru mengajarkan bahasa Jepang kepada saya.)'],
+            ['category' => 'Modul 6', 'pattern' => '51. いただきました', 'meaning' => '"Saya mendapat..." (dari posisi lebih tinggi)', 'example' => '{社長|しゃちょう}にお{土産|みやげ}をいただきました。 (Mendapat oleh-oleh dari direktur.)'],
+            ['category' => 'Modul 6', 'pattern' => '52. くださいます', 'meaning' => '"Saya diberi..." (oleh posisi lebih tinggi)', 'example' => '{部長|ぶちょう}が{本|ほん}をくださいました。 (Kepala bagian memberi saya buku.)'],
+            ['category' => 'Modul 6', 'pattern' => '53. やります', 'meaning' => 'Memberikan (ke orang lebih rendah/hewan)', 'example' => '{犬|いぬ}にえさをやりました。 (Memberi makan pada anjing.)'],
+            ['category' => 'Modul 6', 'pattern' => '54. ～ために', 'meaning' => 'Demi, untuk (tujuan/keinginan)', 'example' => '{家|いえ}を{買|か}うために、{貯金|ちょきん}しています。 (Menabung demi membeli rumah.)'],
+            ['category' => 'Modul 6', 'pattern' => '55. ～のに', 'meaning' => 'Untuk (kegunaan, fungsi, biaya)', 'example' => 'このはさみは{紙|かみ}を{切|き}るのに{使|つか}います。 (Gunting ini digunakan untuk memotong kertas.)'],
+            ['category' => 'Modul 6', 'pattern' => '56. ～そうです', 'meaning' => '"Kayaknya/Kelihatannya" (ます hilang, い hilang, な hilang)', 'example' => 'このケーキは{美味|おい}しそうです。 (Kue ini kelihatannya enak.)'],
+            ['category' => 'Modul 6', 'pattern' => '57. ～て来ます', 'meaning' => 'Pergi dan kembali lagi', 'example' => 'ちょっと{手|て}を{洗|あら}って{来|き}ます。 (Saya mau pergi cuci tangan sebentar.)'],
+            ['category' => 'Modul 6', 'pattern' => '58. ～すぎます', 'meaning' => '"Terlalu" (ます, い, な hilang)', 'example' => 'このシャツは{大|おお}きすぎます。 (Kemeja ini terlalu besar.)'],
+            ['category' => 'Modul 6', 'pattern' => '59. ～やすい / ～にくい', 'meaning' => '"Mudah di..." / "Susah di..."', 'example' => 'この{薬|くすり}は{飲|の}みやすいです。 (Obat ini mudah diminum.)'],
+            ['category' => 'Modul 6', 'pattern' => '60. ～くする / ～にする', 'meaning' => 'Mengubah fungsi sifat (掃除する → 綺麗にする)', 'example' => '{音|おと}を{大|おお}きくします。 (Membesarkan suaranya.)'],
 
-            // 6. DUGAAN & KEMUNGKINAN
-            ['category' => '6. Dugaan & Kemungkinan', 'pattern' => '～でしょう', 'meaning' => 'mungkin...', 'example' => '{明日|あした}は{晴|は}れるでしょう。(Besok mungkin akan cerah.)'],
-            ['category' => '6. Dugaan & Kemungkinan', 'pattern' => '～かもしれません', 'meaning' => 'mungkin saja...', 'example' => '{午後|ごご}から{雨|あめ}が{降|ふ}るかもしれません。(Mungkin sore hari akan turun hujan.)'],
-            ['category' => '6. Dugaan & Kemungkinan', 'pattern' => '～そうです (1)', 'meaning' => 'kelihatannya... (visual)', 'example' => 'このケーキは{美味|おい}しそうです。(Kue ini kelihatannya enak.)'],
-            ['category' => '6. Dugaan & Kemungkinan', 'pattern' => '～そうです (2)', 'meaning' => 'katanya... (informasi)', 'example' => '{明日|あした}は{寒|さむ}くなるそうです。(Katanya besok akan menjadi dingin.)'],
-
-            // 7. PERBANDINGAN & SARAN
-            ['category' => '7. Perbandingan & Saran', 'pattern' => '～ほうがいいです', 'meaning' => 'sebaiknya...', 'example' => '{薬|くすり}を{飲|の}んだほうがいいですよ。(Sebaiknya kamu minum obat.)'],
-            ['category' => '7. Perbandingan & Saran', 'pattern' => '～より', 'meaning' => 'daripada...', 'example' => '{車|くるま}より{電車|でんしゃ}のほうが{速|はや}いです。(Kereta lebih cepat daripada mobil.)'],
-            ['category' => '7. Perbandingan & Saran', 'pattern' => '～ほど', 'meaning' => 'semakin...', 'example' => '{日本語|にほんご}は{勉強|べんきょう}するほど{面白|おもしろ}くなります。(Bahasa Jepang semakin dipelajari semakin menarik.)'],
-
-            // 8. TUJUAN & ALASAN
-            ['category' => '8. Tujuan & Alasan', 'pattern' => '～ために', 'meaning' => 'untuk...', 'example' => '{家族|かぞく}のために{働|はたら}きます。(Saya bekerja untuk keluarga.)'],
-            ['category' => '8. Tujuan & Alasan', 'pattern' => '～ように', 'meaning' => 'agar...', 'example' => '{忘|わす}れないように、メモをします。(Saya membuat catatan agar tidak lupa.)'],
-            ['category' => '8. Tujuan & Alasan', 'pattern' => '～ので', 'meaning' => 'karena... (lebih halus)', 'example' => '{用事|ようじ}があるので、{早|はや}く{帰|かえ}ります。(Karena ada urusan, saya pulang lebih awal.)'],
-            ['category' => '8. Tujuan & Alasan', 'pattern' => '～から', 'meaning' => 'karena...', 'example' => '{暑|あつ}いから、{窓|まど}を{開|あ}けてください。(Karena panas, tolong buka jendela.)'],
-
-            // 9. KONDISI / PENGANDAIAN
-            ['category' => '9. Kondisi / Pengandaian', 'pattern' => '～たら', 'meaning' => 'kalau...', 'example' => '{雨|あめ}が{降|ふ}ったら、{行|い}きません。(Kalau hujan turun, saya tidak pergi.)'],
-            ['category' => '9. Kondisi / Pengandaian', 'pattern' => '～なら', 'meaning' => 'kalau memang...', 'example' => 'パソコンを{買|か}うなら、あの{店|みせ}がいいですよ。(Kalau memang mau beli komputer, toko itu bagus lho.)'],
-            ['category' => '9. Kondisi / Pengandaian', 'pattern' => '～ば', 'meaning' => 'jika...', 'example' => '{天気|てんき}が{良|よ}ければ、{海|うみ}へ{行|い}きます。(Jika cuacanya bagus, saya akan pergi ke laut.)'],
-
-            // 10. URUTAN & AKTIVITAS BERSAMAAN
-            ['category' => '10. Urutan & Aktivitas Bersamaan', 'pattern' => '～ながら', 'meaning' => 'sambil...', 'example' => '{音楽|おんがく}を{聴|き}きながら{勉強|べんきょう}します。(Saya belajar sambil mendengarkan musik.)'],
-            ['category' => '10. Urutan & Aktivitas Bersamaan', 'pattern' => '～前に', 'meaning' => 'sebelum...', 'example' => '{寝|ね}る{前|まえ}に、{本|ほん}を{読|よ}みます。(Sebelum tidur, saya membaca buku.)'],
-            ['category' => '10. Urutan & Aktivitas Bersamaan', 'pattern' => '～後で', 'meaning' => 'setelah...', 'example' => '{仕事|しごと}の{後|あと}で、{飲|の}みに{行|い}きましょう。(Setelah bekerja, ayo pergi minum.)'],
-
-            // 11. DAFTAR & CONTOH
-            ['category' => '11. Daftar & Contoh', 'pattern' => '～たり～たりします', 'meaning' => 'kadang... kadang...', 'example' => '{休|やす}みの{日|ひ}は、{本|ほん}を{読|よ}んだり、{映画|えいが}を{見|み}たりします。(Pada hari libur, kadang membaca buku, kadang menonton film.)'],
-            ['category' => '11. Daftar & Contoh', 'pattern' => '～し', 'meaning' => 'dan juga...', 'example' => 'このレストランは{安|やす}いし、{美味|おい}しいです。(Restoran ini murah, dan juga enak.)'],
-
-            // 12. PASIF & KAUSATIF DASAR
-            ['category' => '12. Pasif & Kausatif Dasar', 'pattern' => '～（に）～られます', 'meaning' => 'dikenai tindakan (Passive)', 'example' => '{私|わたし}は{先生|せんせい}に{褒|ほめ}られました。(Saya dipuji oleh guru.)'],
-            ['category' => '12. Pasif & Kausatif Dasar', 'pattern' => '～させます', 'meaning' => 'menyuruh / membiarkan (Causative)', 'example' => '{母|はは}は{妹|いもうと}に{手伝|てつだ}わせました。(Ibu menyuruh adik perempuan membantu.)'],
-
-            // 13. KEHARUSAN & DUGAAN LAIN
-            ['category' => '13. Keharusan & Dugaan Lain', 'pattern' => '～はずです', 'meaning' => 'seharusnya...', 'example' => '{彼|かれ}は{今日|きょう}{来|く}るはずです。(Dia seharusnya datang hari ini.)'],
-            ['category' => '13. Keharusan & Dugaan Lain', 'pattern' => '～予定です', 'meaning' => 'rencana...', 'example' => '{来週|らいしゅう}、{旅行|りょこう}に{行|い}く{予定|よてい}です。(Rencananya saya akan pergi liburan minggu depan.)'],
+            ['category' => 'Modul 7', 'pattern' => '61. ～場合は', 'meaning' => 'Apabila (sesuatu di luar dugaan/tidak puas)', 'example' => '{遅|おく}れる{場合|ばあい}は、{連絡|れんらく}してください。 (Apabila terlambat, tolong hubungi.)'],
+            ['category' => 'Modul 7', 'pattern' => '62. ～のに', 'meaning' => 'Padahal (k.kerja biasa, k.sifat, k.benda + な)', 'example' => '{約束|やくそく}をしたのに、{彼|かれ}は{来|き}ませんでした。 (Padahal sudah janji, dia tidak datang.)'],
+            ['category' => 'Modul 7', 'pattern' => '63. ～ところ', 'meaning' => '"Akan, sedang, baru saja"', 'example' => '今から{出|で}かけるところです。 (Baru saja mau keluar sekarang.)'],
+            ['category' => 'Modul 7', 'pattern' => '64. ～ばかり', 'meaning' => '"Baru, baru saja" (sudah agak lama dibanding たった今)', 'example' => '{先月|せんげつ}、{日本|にほん}へ{来|き}たばかりです。 (Baru saja datang ke Jepang bulan lalu.)'],
+            ['category' => 'Modul 7', 'pattern' => '65. ～はず', 'meaning' => 'Seharusnya (k.kerja biasa, k.sifat + な, k.benda + の)', 'example' => '{彼|かれ}は{今日|きょう}{来|く}るはずです。 (Dia seharusnya datang hari ini.)'],
+            ['category' => 'Modul 7', 'pattern' => '66. ～そうです', 'meaning' => "Katanya: k.kerja biasa + そうです\nKelihatannya: k.kerja (ます potong) + そうです", 'example' => '{明日|あした}は{雨|あめ}が{降|ふ}るそうです。 (Katanya besok akan hujan.)'],
+            ['category' => 'Modul 7', 'pattern' => '67. ～ようです', 'meaning' => 'Sepertinya / kayaknya (berdasarkan pendengaran/penglihatan)', 'example' => 'となりの{部屋|へや}に{誰|だれ}かいるようです。 (Sepertinya ada orang di kamar sebelah.)'],
+            ['category' => 'Modul 7', 'pattern' => '68. Kausatif (Menyuruh)', 'meaning' => "I: 読む → 読ませる\nII: 食べる → 食べさせる\nIII: する → させる; 来る → こさせる", 'example' => '{子供|こども}に{野菜|やさい}を{食|た}べさせます。 (Menyuruh anak makan sayur.)'],
+            ['category' => 'Modul 7', 'pattern' => '69. ～させていただけませんか', 'meaning' => '"Mohon izinkan saya..."', 'example' => 'ここで{写真|しゃしん}を{撮|と}らせていただけませんか。 (Mohon izinkan saya mengambil foto di sini.)'],
+            ['category' => 'Modul 7', 'pattern' => '70. ～ていただけませんか', 'meaning' => '"Bisakah Anda... untuk saya"', 'example' => '{塩|しお}を{取|と}っていただけませんか。 (Bisakah tolong ambilkan garam untuk saya?)'],
         ];
 
         foreach ($bunpos as $bunpo) {
