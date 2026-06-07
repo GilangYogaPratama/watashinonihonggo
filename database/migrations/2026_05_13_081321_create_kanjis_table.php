@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('kanji');
             $table->string('onyomi')->nullable();
             $table->string('kunyomi')->nullable();
-            $table->string('arti');
+            $table->string('arti')->nullable();
+            $table->string('level')->default('N4');
             $table->timestamps();
         });
     }

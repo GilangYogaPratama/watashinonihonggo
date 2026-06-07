@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             BunpoSeeder::class,
+            KanjiSeeder::class,
+            KotobaSeeder::class,
+            ParagraphSeeder::class,
         ]);
     }
 }

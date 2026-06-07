@@ -9,5 +9,5 @@ class Kanji extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['kanji', 'onyomi', 'kunyomi', 'arti'];
+    protected $fillable = ['kanji', 'onyomi', 'kunyomi', 'arti', 'level'];
 }

@@ -8,19 +8,25 @@ use App\Models\Kotoba;
 
 class QuizController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Fetch all Kanji
-        $kanjis = Kanji::all();
+        $level = $request->query('level', 'N4');
         
-        // Fetch all Kotoba that have valid kanji entries (exclude empty, hyphens)
-        $kotobas = Kotoba::whereNotNull('kanji')
+        // Fetch Kanji based on level
+        $kanjis = Kanji::where('level', $level)->get();
+        
+        // Fetch Bunpo based on level
+        $bunpos = \App\Models\Bunpo::where('level', $level)->get();
+        
+        // Fetch Kotoba based on level that have valid kanji entries
+        $kotobas = Kotoba::where('level', $level)
+            ->whereNotNull('kanji')
             ->where('kanji', '!=', '')
             ->where('kanji', '!=', '—')
             ->where('kanji', '!=', '-')
             ->where('kanji', '!=', '–')
             ->get();
             
-        return view('quiz', compact('kanjis', 'kotobas'));
+        return view('quiz', compact('kanjis', 'bunpos', 'kotobas', 'level'));
     }
 }

@@ -3,76 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N4 Quiz Terminal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+    <title>Latihan Kanji & Kosakata {{ $level }} - Watashi no Nihongo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #fcfcfc;
-            --bg-grid: #eeeeee;
-            --primary: #a855f7; /* High-tech Purple */
-            --primary-glow: rgba(168, 85, 247, 0.15);
-            --primary-green: #22c55e;
-            --primary-red: #ef4444;
-            --accent-yellow: #facc15;
-            --accent-gray: #94a3b8;
-            --text-main: #334155;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
             --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary: #8b5cf6; /* Violet/Purple for Quiz */
+            --primary-hover: #7c3aed;
+            --primary-light: #f5f3ff;
+            --success: #10b981;
+            --success-light: #ecfdf5;
+            --error: #ef4444;
+            --error-light: #fef2f2;
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: var(--bg-main);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            touch-action: manipulation;
+            padding: 2rem;
             user-select: none;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .background-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--bg-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
-            background-size: 40px 40px;
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            filter: blur(100px);
             z-index: -1;
+            opacity: 0.5;
+            animation: pulse-blob 10s infinite alternate;
+        }
+
+        body::before {
+            top: -10vw;
+            left: -10vw;
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        body::after {
+            bottom: -10vw;
+            right: -10vw;
+            background: rgba(16, 185, 129, 0.15);
+            animation-delay: -5s;
+        }
+
+        @keyframes pulse-blob {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(20px, 20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .container {
             width: 100%;
-            max-width: 750px;
-            padding: 2rem;
+            max-width: 650px;
             z-index: 10;
         }
 
         .nav-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
+            justify-content: flex-start;
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
         .nav-back {
-            color: var(--accent-gray);
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
             transition: color 0.2s;
         }
 
@@ -80,68 +105,55 @@
             color: var(--primary);
         }
 
-        .header-section {
-            border-bottom: 4px solid var(--primary);
-            padding-bottom: 0.8rem;
-            margin-bottom: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+        .nav-back svg {
+            margin-right: 6px;
         }
 
-        h1 { 
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 1.5rem; 
-            letter-spacing: 2px; 
-            color: var(--primary); 
-            text-transform: uppercase;
-        }
-
-        /* Card panels */
         .panel {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 3rem 2rem;
-            position: relative;
-            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.02);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05), 0 10px 15px -5px rgba(0, 0, 0, 0.02);
             width: 100%;
+            min-height: 380px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 400px;
         }
 
-        /* Tech Accents */
-        .accent-tl { position: absolute; top: 15px; left: 15px; width: 15px; height: 15px; border-top: 3px solid var(--accent-gray); border-left: 3px solid var(--accent-gray); }
-        .accent-br { position: absolute; bottom: 15px; right: 15px; width: 15px; height: 15px; border-bottom: 3px solid var(--accent-gray); border-right: 3px solid var(--accent-gray); }
-        .accent-top-bar { position: absolute; top: 0; left: 10%; width: 60px; height: 6px; background: var(--accent-yellow); }
-
-        /* Setup Screen styles */
-        .setup-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+        h2.title {
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 2.5rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
 
+        /* Config / Setup Screen */
+        .config-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
         .menu-options {
-            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
         .option-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 1.2rem 2rem;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.25rem;
             cursor: pointer;
-            transition: all 0.25s ease;
-            position: relative;
+            border-radius: 8px;
+            transition: all 0.2s;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -149,66 +161,43 @@
 
         .option-card:hover {
             border-color: var(--primary);
-            background: #fafafa;
-            transform: translateX(4px);
+            background-color: #fafafa;
         }
 
         .option-card.active {
             border-color: var(--primary);
-            background: var(--primary-glow);
-            border-left: 6px solid var(--primary);
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
         }
 
         .option-details {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .option-title {
-            font-family: 'Orbitron', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
-            letter-spacing: 2px;
         }
 
         .option-desc {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
         .option-badge {
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             padding: 2px 8px;
-            background: var(--text-main);
-            color: #fff;
-            font-weight: 700;
-            letter-spacing: 1px;
+            background: #f1f5f9;
+            color: var(--text-muted);
+            border-radius: 4px;
+            font-weight: 600;
         }
 
         .option-card.active .option-badge {
             background: var(--primary);
-        }
-
-        /* Config Grid */
-        .config-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            width: 100%;
-            margin-bottom: 2.5rem;
-            padding-top: 1rem;
-            border-top: 1px dashed #e2e8f0;
-        }
-
-        .config-label {
-            font-size: 0.65rem;
-            color: var(--accent-gray);
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-            display: block;
+            color: #ffffff;
         }
 
         .selector-group {
@@ -216,17 +205,19 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             width: 100%;
+            margin-bottom: 2rem;
         }
 
         .selector-btn {
-            background: #fff;
-            border: 1px solid var(--accent-gray);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             padding: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
             color: var(--text-muted);
             cursor: pointer;
+            border-radius: 8px;
             transition: all 0.2s;
             text-align: center;
         }
@@ -238,49 +229,43 @@
 
         .selector-btn.active {
             background: var(--primary);
-            color: #fff;
+            color: #ffffff;
             border-color: var(--primary);
         }
 
-        /* Action Buttons */
         .btn-launch {
-            background: var(--primary);
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: #ffffff;
             border: none;
-            padding: 1.2rem 2.5rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            font-weight: 900;
+            padding: 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.25s ease;
-            width: 100%;
+            transition: all 0.3s;
             text-align: center;
-            border-bottom: 4px solid #7e22ce;
+            width: 100%;
+            margin-top: auto;
+            box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);
         }
 
         .btn-launch:hover {
-            background: #9333ea;
+            box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.4);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
         }
 
-        .btn-launch:active {
-            transform: translateY(0);
-        }
-
-        /* Game Board Styles */
+        /* Gameplay Screen */
         .hud-row {
             display: flex;
             justify-content: space-between;
-            width: 100%;
-            margin-bottom: 2.5rem;
-            font-size: 0.65rem;
-            color: var(--accent-gray);
-            letter-spacing: 2px;
-            font-weight: 700;
-            border-bottom: 1px dashed #e2e8f0;
-            padding-bottom: 0.8rem;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hud-value {
@@ -288,277 +273,207 @@
             font-weight: 700;
         }
 
-        .hud-value.glow-purple {
-            color: var(--primary);
-        }
-
-        /* Target Display */
         .target-box {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: 3rem;
-            width: 100%;
-            min-height: 140px;
+            margin-bottom: 2.5rem;
+            text-align: center;
         }
 
         .target-char {
             font-family: 'Noto Sans JP', sans-serif;
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
             color: var(--text-main);
-            text-align: center;
-            line-height: 1.2;
+            margin-bottom: 0.5rem;
         }
 
-        .target-clue {
-            font-size: 1.1rem;
+        .target-prompt {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-top: 1.2rem;
-            font-weight: 700;
-            padding: 8px 24px;
-            background: rgba(168, 85, 247, 0.05);
-            border-left: 4px solid var(--accent-yellow);
-            border-radius: 2px;
+            font-weight: 500;
         }
 
-        /* Choices Grid */
+        .meaning-reveal {
+            display: none;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 700;
+            background: var(--primary-light);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
         .choices-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
             width: 100%;
-            margin-bottom: 2.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .container { padding: 1rem; }
-            .panel { padding: 1.5rem 1rem; min-height: 350px; }
-            .choices-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .target-char { font-size: 3.5rem; }
-            .choice-btn { padding: 1rem 1.2rem; font-size: 0.85rem; }
-            .selector-btn { padding: 8px; font-size: 0.75rem; }
-            .btn-launch { padding: 1rem 1.5rem; font-size: 0.8rem; }
-            .telemetry-table { font-size: 0.65rem; }
-            .telemetry-table th, .telemetry-table td { padding: 6px; }
-            .setup-title { font-size: 1rem; margin-bottom: 1.5rem; }
-            .menu-options { margin-bottom: 1.5rem; }
-            .option-card { padding: 1rem 1.2rem; }
+            margin-bottom: 1.5rem;
         }
 
         .choice-btn {
-            background: #fff;
-            border: 1px solid #cbd5e1;
-            padding: 1.2rem 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.25rem;
+            font-family: inherit;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-main);
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 8px;
+            transition: all 0.2s;
             text-align: left;
             display: flex;
             align-items: center;
-            position: relative;
         }
 
         .choice-btn:hover:not(:disabled) {
             border-color: var(--primary);
-            background: #fafafa;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .choice-letter {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            color: var(--accent-gray);
-            margin-right: 12px;
-            letter-spacing: 1px;
-            border-right: 1px solid #e2e8f0;
-            padding-right: 10px;
+            background-color: #fafafa;
         }
 
         .choice-btn:disabled {
             cursor: default;
         }
 
-        /* State color indicators */
-        .choice-btn.correct {
-            border-color: var(--primary-green) !important;
-            background: rgba(34, 197, 94, 0.08) !important;
-            color: var(--primary-green) !important;
-            border-left: 6px solid var(--primary-green) !important;
+        .choice-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-right: 8px;
+            font-weight: 700;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
 
-        .choice-btn.correct .choice-letter {
-            color: var(--primary-green) !important;
-            border-color: rgba(34, 197, 94, 0.2) !important;
+        /* Gameplay Colors */
+        .choice-btn.correct {
+            border-color: var(--success) !important;
+            background-color: var(--success-light) !important;
+            color: var(--success) !important;
         }
 
         .choice-btn.incorrect {
-            border-color: var(--primary-red) !important;
-            background: rgba(239, 68, 68, 0.08) !important;
-            color: var(--primary-red) !important;
-            border-left: 6px solid var(--primary-red) !important;
+            border-color: var(--error) !important;
+            background-color: var(--error-light) !important;
+            color: var(--error) !important;
         }
 
-        .choice-btn.incorrect .choice-letter {
-            color: var(--primary-red) !important;
-            border-color: rgba(239, 68, 68, 0.2) !important;
-        }
-
-        /* Progress HUD section */
         .progress-section {
             width: 100%;
-            margin-top: 1.5rem;
+            margin-top: auto;
         }
 
         .progress-info {
             display: flex;
             justify-content: space-between;
-            font-size: 0.6rem;
-            color: var(--accent-gray);
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .progress-bar {
             width: 100%;
             height: 6px;
             background: #e2e8f0;
+            border-radius: 9999px;
             position: relative;
+            overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
             background: var(--primary);
             width: 0%;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.3s;
         }
 
-        /* Next Button Section */
         .action-row {
             width: 100%;
             margin-top: 1rem;
-            min-height: 60px;
             display: flex;
             justify-content: flex-end;
+            min-height: 45px;
         }
 
         .btn-next {
             background: var(--text-main);
-            color: #fff;
+            color: #ffffff;
             border: none;
-            padding: 1rem 2rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            font-weight: 700;
+            padding: 0.65rem 1.5rem;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background-color 0.2s;
             display: none;
         }
 
         .btn-next:hover {
-            background: var(--primary);
-            box-shadow: 0 4px 10px rgba(168, 85, 247, 0.2);
+            background-color: var(--primary);
         }
 
-        /* Summary Screen styles */
+        /* Summary Screen */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
             width: 100%;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 600px) {
-            .metrics-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
+            margin-bottom: 2rem;
         }
 
         .metric-card {
-            border: 1px solid #e2e8f0;
-            padding: 1.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
             text-align: center;
-            background: #fff;
-            position: relative;
         }
 
         .metric-label {
-            font-size: 0.55rem;
-            color: var(--accent-gray);
-            letter-spacing: 2px;
-            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
         }
 
         .metric-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--text-main);
-        }
-
-        .metric-card.sync-status {
-            border-top: 4px solid var(--accent-yellow);
-        }
-        
-        .metric-card.score-val {
-            border-top: 4px solid var(--primary);
-        }
-
-        .metric-card.accuracy-val {
-            border-top: 4px solid var(--primary-green);
-        }
-
-        .summary-header {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            color: var(--accent-gray);
-            letter-spacing: 2px;
+            font-size: 1.5rem;
             font-weight: 700;
-            text-transform: uppercase;
-            align-self: flex-start;
-            margin-bottom: 0.8rem;
-            border-bottom: 1px solid #cbd5e1;
-            width: 100%;
-            padding-bottom: 5px;
         }
 
-        /* Telemetry table styling */
         .telemetry-container {
             width: 100%;
-            max-height: 250px;
+            max-height: 200px;
             overflow-y: auto;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 2rem;
         }
 
         .telemetry-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             text-align: left;
         }
 
         .telemetry-table th {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.6rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-weight: 600;
             background: #f8fafc;
             padding: 10px;
-            border-bottom: 1px solid #cbd5e1;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 5;
@@ -567,179 +482,167 @@
         .telemetry-table td {
             padding: 10px;
             border-bottom: 1px solid #f1f5f9;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .telemetry-table tr:hover {
-            background: #fdfdfd;
         }
 
         .status-badge {
-            font-size: 0.55rem;
+            font-size: 0.7rem;
             padding: 2px 6px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #fff;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #ffffff;
             display: inline-block;
         }
 
-        .status-badge.correct { background: var(--primary-green); }
-        .status-badge.incorrect { background: var(--primary-red); }
+        .status-badge.correct { background: var(--success); }
+        .status-badge.incorrect { background: var(--error); }
 
         .btn-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
             width: 100%;
+            margin-top: auto;
         }
 
-        @media (max-width: 500px) {
-            .btn-group {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        .btn-action {
-            background: #fff;
-            border: 1px solid var(--text-main);
+        .btn-action-quiz {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 1.2rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            padding: 0.875rem;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: 700;
             transition: all 0.2s;
             text-align: center;
+            text-decoration: none;
         }
 
-        .btn-action:hover {
+        .btn-action-quiz:hover {
             border-color: var(--primary);
-            color: var(--primary);
             background: #fafafa;
         }
 
-        .btn-action.btn-purple {
+        .btn-action-quiz.btn-purple {
             background: var(--primary);
-            color: #fff;
+            color: #ffffff;
             border: none;
-            border-bottom: 4px solid #7e22ce;
         }
 
-        .btn-action.btn-purple:hover {
-            background: #9333ea;
-            color: #fff;
+        .btn-action-quiz.btn-purple:hover {
+            background-color: var(--primary-hover);
+        }
+
+        @media (max-width: 600px) {
+            .choices-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn-group {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="background-grid"></div>
-
     <div class="container">
-        
+        <nav class="nav-header">
+            <a href="{{ route('home') }}" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Kembali ke Dashboard
+            </a>
+        </nav>
+
         <!-- Setup Screen -->
         <div id="setupScreen" class="panel">
-            <div class="accent-tl"></div><div class="accent-br"></div>
-            <div class="accent-top-bar"></div>
+            <h2 class="title">Setup Evaluasi {{ $level }}</h2>
             
-            <nav class="nav-header" style="width:100%; margin-bottom: 2rem;">
-                <a href="{{ route('home') }}" class="nav-back">← KEMBALI KE HOME</a>
-                <div style="font-size: 0.55rem; color: var(--accent-gray); font-weight: 700; letter-spacing: 2px;">SYSTEM SECURE</div>
-            </nav>
-
-            <h2 class="setup-title" style="font-family: 'Orbitron';">SETUP EVALUASI</h2>
-
-            <!-- Mode Selection Card -->
-            <label class="config-label" style="align-self: flex-start;">Pilih Tipe Evaluasi</label>
-            <div class="menu-options">
-                <div class="option-card active" onclick="selectMode('kanji', this)">
-                    <div class="option-details">
-                        <span class="option-title">Membaca Kanji</span>
-                        <span class="option-desc">Tebak cara membaca karakter Kanji (onyomi/kunyomi).</span>
+            <div style="margin-bottom: 1.5rem;">
+                <span class="config-label">Pilih Tipe Evaluasi</span>
+                <div class="menu-options">
+                    <div class="option-card active" onclick="selectMode('kanji', this)">
+                        <div class="option-details">
+                            <span class="option-title">Membaca Kanji</span>
+                            <span class="option-desc">Tebak cara membaca karakter Kanji (onyomi/kunyomi).</span>
+                        </div>
+                        <span class="option-badge">Modul 1</span>
                     </div>
-                    <span class="option-badge">MODULE 01</span>
-                </div>
 
-                <div class="option-card" onclick="selectMode('kotoba', this)">
-                    <div class="option-details">
-                        <span class="option-title">Membaca Kotoba</span>
-                        <span class="option-desc">Tebak cara membaca kosakata ke dalam bentuk hiragana.</span>
+                    <div class="option-card" onclick="selectMode('kotoba', this)">
+                        <div class="option-details">
+                            <span class="option-title">Membaca Kotoba</span>
+                            <span class="option-desc">Tebak cara membaca kosakata ke dalam bentuk hiragana.</span>
+                        </div>
+                        <span class="option-badge">Modul 2</span>
                     </div>
-                    <span class="option-badge">MODULE 02</span>
-                </div>
 
-                <div class="option-card" onclick="selectMode('mixed', this)">
-                    <div class="option-details">
-                        <span class="option-title">Evaluasi Gabungan</span>
-                        <span class="option-desc">Evaluasi acak gabungan dari kosakata dan kanji.</span>
+                    <div class="option-card" onclick="selectMode('bunpo', this)">
+                        <div class="option-details">
+                            <span class="option-title">Tata Bahasa (Bunpo)</span>
+                            <span class="option-desc">Pilih arti/makna yang tepat untuk pola tata bahasa.</span>
+                        </div>
+                        <span class="option-badge">Modul 3</span>
                     </div>
-                    <span class="option-badge">MODULE 03</span>
-                </div>
-            </div>
 
-            <!-- Configuration Options -->
-            <div class="config-grid">
-                <div>
-                    <span class="config-label">Jumlah Soal</span>
-                    <div class="selector-group">
-                        <button class="selector-btn active" onclick="selectLimit(10, this)">10 SOAL</button>
-                        <button class="selector-btn" onclick="selectLimit(20, this)">20 SOAL</button>
-                        <button class="selector-btn" onclick="selectLimit(30, this)">30 SOAL</button>
+                    <div class="option-card" onclick="selectMode('mixed', this)">
+                        <div class="option-details">
+                            <span class="option-title">Evaluasi Gabungan</span>
+                            <span class="option-desc">Evaluasi acak gabungan dari kanji, kosakata, dan tata bahasa.</span>
+                        </div>
+                        <span class="option-badge">Gabungan</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Launch Button -->
-            <button class="btn-launch" style="font-family: 'Orbitron';" onclick="initializeQuiz()">INISIALISASI KUIS</button>
+            <button class="btn-launch" onclick="initializeQuiz()">Mulai Evaluasi</button>
         </div>
 
         <!-- Gameplay Screen -->
         <div id="gameplayScreen" class="panel" style="display: none;">
-            <div class="accent-tl"></div><div class="accent-br"></div>
-            <div class="accent-top-bar"></div>
+            <div class="hud-row">
+                <div>SOAL: <span id="currentNum" class="hud-value">01</span> / <span id="totalNum" class="hud-value">10</span></div>
+                <div>MODE: <span id="activeMode" class="hud-value" style="color: var(--primary);">KANJI</span></div>
+                <div>SKOR: <span id="currentScore" class="hud-value">0</span></div>
+            </div>
 
-            <nav class="hud-row">
-                <div>FEED ID: <span id="currentNum" class="hud-value">01</span> / <span id="totalNum" class="hud-value">10</span></div>
-                <div>MODE: <span id="activeMode" class="hud-value glow-purple">KANJI</span></div>
-                <div>SCORE: <span id="currentScore" class="hud-value">000</span> PTS</div>
-            </nav>
-
-            <!-- Question/Target Box -->
             <div class="target-box">
                 <span id="targetChar" class="target-char">漢</span>
-                <span id="targetClue" class="target-clue">意味: Mandarin / Chinese character</span>
+                <span id="targetClue" class="target-prompt">Pilih arti atau cara baca yang benar</span>
+                <div id="meaningReveal" class="meaning-reveal"></div>
             </div>
 
-            <!-- Choices Grid -->
             <div class="choices-grid">
                 <button class="choice-btn" onclick="submitAnswer(0)">
-                    <span class="choice-letter">A //</span>
-                    <span class="choice-text" id="choice0">--</span>
+                    <span class="choice-label">A</span>
+                    <span id="choice0">--</span>
                 </button>
                 <button class="choice-btn" onclick="submitAnswer(1)">
-                    <span class="choice-letter">B //</span>
-                    <span class="choice-text" id="choice1">--</span>
+                    <span class="choice-label">B</span>
+                    <span id="choice1">--</span>
                 </button>
                 <button class="choice-btn" onclick="submitAnswer(2)">
-                    <span class="choice-letter">C //</span>
-                    <span class="choice-text" id="choice2">--</span>
+                    <span class="choice-label">C</span>
+                    <span id="choice2">--</span>
                 </button>
                 <button class="choice-btn" onclick="submitAnswer(3)">
-                    <span class="choice-letter">D //</span>
-                    <span class="choice-text" id="choice3">--</span>
+                    <span class="choice-label">D</span>
+                    <span id="choice3">--</span>
                 </button>
             </div>
 
-            <!-- Action / Navigation Row -->
             <div class="action-row">
-                <button id="btnNext" class="btn-next" style="font-family: 'Orbitron';" onclick="nextQuestion()">NEXT SEQUENCE</button>
+                <button id="btnNext" class="btn-next" onclick="nextQuestion()">Next Soal</button>
             </div>
 
-            <!-- Progress HUD -->
             <div class="progress-section">
                 <div class="progress-info">
-                    <span>PROGRES</span>
+                    <span>Progres Kuis</span>
                     <span id="progressPercent">0%</span>
                 </div>
                 <div class="progress-bar">
@@ -750,42 +653,32 @@
 
         <!-- Summary Screen -->
         <div id="summaryScreen" class="panel" style="display: none;">
-            <div class="accent-tl"></div><div class="accent-br"></div>
-            <div class="accent-top-bar"></div>
+            <h2 class="title" style="margin-bottom: 2rem;">Hasil Diagnostik {{ $level }}</h2>
 
-            <nav class="nav-header" style="width:100%; margin-bottom: 2rem;">
-                <div style="font-family: 'Orbitron'; font-size: 1.1rem; letter-spacing: 2px; font-weight: 700; color: var(--primary);">HASIL DIAGNOSTIK</div>
-                <div style="font-size: 0.55rem; color: var(--accent-gray); font-weight: 700; letter-spacing: 2px;">EVALUASI SELESAI</div>
-            </nav>
-
-            <!-- Metrics Grid -->
             <div class="metrics-grid">
-                <div class="metric-card score-val">
-                    <div class="metric-label">FINAL SCORE</div>
+                <div class="metric-card">
+                    <div class="metric-label">Skor Akhir</div>
                     <div id="finalScore" class="metric-value">000</div>
                 </div>
-                <div class="metric-card accuracy-val">
-                    <div class="metric-label">AKURASI</div>
+                <div class="metric-card">
+                    <div class="metric-label">Akurasi</div>
                     <div id="finalAccuracy" class="metric-value">0%</div>
                 </div>
-                <div class="metric-card sync-status">
-                    <div class="metric-label">RATING</div>
+                <div class="metric-card">
+                    <div class="metric-label">Rating</div>
                     <div id="syncRating" class="metric-value">D</div>
                 </div>
             </div>
 
-            <!-- Telemetry Log -->
-            <h3 class="summary-header" style="font-family: 'Orbitron';">TELEMETRY LOG</h3>
             <div class="telemetry-container">
                 <table class="telemetry-table">
-                    <thead style="font-family: 'Orbitron';">
+                    <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>TARGET</th>
-                            <th>ARTI</th>
-                            <th>JAWABANMU</th>
-                            <th>JAWABAN BENAR</th>
-                            <th>STATUS</th>
+                            <th>Target</th>
+                            <th>Arti</th>
+                            <th>Jawabanmu</th>
+                            <th>Jawaban Benar</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="telemetryRows">
@@ -794,30 +687,25 @@
                 </table>
             </div>
 
-            <!-- Navigation Group -->
             <div class="btn-group">
-                <button class="btn-action" style="font-family: 'Orbitron';" onclick="returnToSetup()">ULANGI KUIS</button>
-                <a href="{{ route('home') }}" class="btn-action btn-purple" style="font-family: 'Orbitron'; text-decoration:none;">KEMBALI KE HOME</a>
+                <button class="btn-action-quiz" onclick="returnToSetup()">Ulangi Kuis</button>
+                <a href="{{ route('home') }}" class="btn-action-quiz btn-purple">Kembali ke Home</a>
             </div>
         </div>
-
     </div>
 
     <script>
-        // Datasets passed from Laravel PHP
         const rawKanjis = @json($kanjis);
         const rawKotobas = @json($kotobas);
+        const rawBunpos = @json($bunpos ?? []);
 
-        // Core Game Engine State variables
         let selectedMode = 'kanji';
-        let questionLimit = 10;
         let activeQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
         let telemetryLog = [];
         let hasAnswered = false;
 
-        // Sound Engine synthesizer using Web Audio API
         let audioCtx = null;
         function triggerSound(type) {
             try {
@@ -836,36 +724,27 @@
                 const now = audioCtx.currentTime;
 
                 if (type === 'correct') {
-                    // Retro sci-fi correct blip
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(480, now);
                     osc.frequency.exponentialRampToValueAtTime(960, now + 0.12);
-                    
                     gainNode.gain.setValueAtTime(0.12, now);
                     gainNode.gain.exponentialRampToValueAtTime(0.005, now + 0.12);
-                    
                     osc.start(now);
                     osc.stop(now + 0.13);
                 } else if (type === 'incorrect') {
-                    // Low synth hum warning
                     osc.type = 'sawtooth';
                     osc.frequency.setValueAtTime(140, now);
                     osc.frequency.linearRampToValueAtTime(80, now + 0.22);
-                    
                     gainNode.gain.setValueAtTime(0.15, now);
                     gainNode.gain.linearRampToValueAtTime(0.005, now + 0.22);
-                    
                     osc.start(now);
                     osc.stop(now + 0.23);
                 } else if (type === 'click') {
-                    // Soft UI select click
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(600, now);
                     osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
-                    
                     gainNode.gain.setValueAtTime(0.08, now);
                     gainNode.gain.exponentialRampToValueAtTime(0.005, now + 0.04);
-                    
                     osc.start(now);
                     osc.stop(now + 0.05);
                 }
@@ -874,7 +753,6 @@
             }
         }
 
-        // Setup Screen interaction functions
         function selectMode(mode, element) {
             triggerSound('click');
             selectedMode = mode;
@@ -882,29 +760,6 @@
             element.classList.add('active');
         }
 
-        function selectLimit(limit, element) {
-            triggerSound('click');
-            questionLimit = limit;
-            document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            
-            // Format button texts so the user sees count instead of seconds if desired
-            // In Indonesian: tebak-tebakan kanji/kotoba, let's change text from "X SEC" to "X SOAL"
-            element.parentElement.querySelectorAll('.selector-btn').forEach((btn, index) => {
-                const val = (index + 1) * 10;
-                btn.textContent = `${val} SOAL`;
-            });
-        }
-        
-        // Initialize limit buttons text on load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.selector-btn').forEach((btn, index) => {
-                const val = (index + 1) * 10;
-                btn.textContent = `${val} SOAL`;
-            });
-        });
-
-        // Initialize and shuffle array helper
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -913,7 +768,6 @@
             return array;
         }
 
-        // Initialize quiz questions
         function initializeQuiz() {
             triggerSound('click');
             activeQuestions = [];
@@ -922,16 +776,14 @@
             telemetryLog = [];
             hasAnswered = false;
 
-            // Generate question pool based on mode selection
             if (selectedMode === 'kanji') {
                 if (rawKanjis.length === 0) {
-                    alert("Data Kanji kosong! Jalankan seeder database terlebih dahulu.");
+                    alert("Data Kanji kosong!");
                     return;
                 }
                 const pool = shuffle([...rawKanjis]);
-                for (let i = 0; i < Math.min(questionLimit, pool.length); i++) {
+                for (let i = 0; i < pool.length; i++) {
                     const k = pool[i];
-                    // Correct answer Onyomi / Kunyomi combination
                     const onyomi = k.onyomi && k.onyomi.trim() !== '—' && k.onyomi.trim() !== '-' ? k.onyomi.trim() : '';
                     const kunyomi = k.kunyomi && k.kunyomi.trim() !== '—' && k.kunyomi.trim() !== '-' ? k.kunyomi.trim() : '';
                     
@@ -946,7 +798,7 @@
                         type: 'kanji',
                         item: k,
                         target: k.kanji,
-                        clue: `Arti: ${k.arti}`,
+                        clue: `Pilih cara baca yang tepat`,
                         meaning: k.arti,
                         correctAnswer: reading,
                         distractorPool: rawKanjis.map(item => {
@@ -958,82 +810,114 @@
                 }
             } else if (selectedMode === 'kotoba') {
                 if (rawKotobas.length === 0) {
-                    alert("Data Kotoba kosong! Jalankan seeder database terlebih dahulu.");
+                    alert("Data Kotoba kosong!");
                     return;
                 }
                 const pool = shuffle([...rawKotobas]);
-                for (let i = 0; i < Math.min(questionLimit, pool.length); i++) {
+                for (let i = 0; i < pool.length; i++) {
                     const kt = pool[i];
                     activeQuestions.push({
                         type: 'kotoba',
                         item: kt,
                         target: kt.kanji && kt.kanji.trim() !== '—' && kt.kanji.trim() !== '-' ? kt.kanji : kt.japanese,
-                        clue: `Arti: ${kt.arti_indonesia}`,
+                        clue: `Pilih cara baca yang tepat`,
                         meaning: kt.arti_indonesia,
                         correctAnswer: kt.japanese,
                         distractorPool: rawKotobas.map(item => item.japanese).filter(j => j !== kt.japanese)
                     });
                 }
-            } else { // Mixed mode
+            } else if (selectedMode === 'bunpo') {
+                if (rawBunpos.length === 0) {
+                    alert("Data Tata Bahasa kosong!");
+                    return;
+                }
+                const pool = shuffle([...rawBunpos]);
+                for (let i = 0; i < pool.length; i++) {
+                    const b = pool[i];
+                    activeQuestions.push({
+                        type: 'bunpo',
+                        item: b,
+                        target: b.pattern,
+                        clue: `Pilih arti atau makna yang tepat`,
+                        meaning: b.meaning,
+                        correctAnswer: b.meaning,
+                        distractorPool: rawBunpos.map(item => item.meaning).filter(m => m !== b.meaning)
+                    });
+                }
+            } else {
                 const kanjiPool = shuffle([...rawKanjis]);
                 const kotobaPool = shuffle([...rawKotobas]);
+                const bunpoPool = shuffle([...rawBunpos]);
+                const totalMixed = kanjiPool.length + kotobaPool.length + bunpoPool.length;
                 
                 let kanjiIndex = 0;
                 let kotobaIndex = 0;
+                let bunpoIndex = 0;
 
-                for (let i = 0; i < questionLimit; i++) {
-                    // Alternating types randomly
-                    if ((Math.random() > 0.5 && kanjiIndex < kanjiPool.length) || kotobaIndex >= kotobaPool.length) {
-                        if (kanjiIndex < kanjiPool.length) {
-                            const k = kanjiPool[kanjiIndex++];
-                            const o = k.onyomi && k.onyomi.trim() !== '—' && k.onyomi.trim() !== '-' ? k.onyomi.trim() : '';
-                            const ku = k.kunyomi && k.kunyomi.trim() !== '—' && k.kunyomi.trim() !== '-' ? k.kunyomi.trim() : '';
-                            let reading = (o && ku) ? `${o} / ${ku}` : (o || ku || '???');
+                for (let i = 0; i < totalMixed; i++) {
+                    const available = [];
+                    if (kanjiIndex < kanjiPool.length) available.push('kanji');
+                    if (kotobaIndex < kotobaPool.length) available.push('kotoba');
+                    if (bunpoIndex < bunpoPool.length) available.push('bunpo');
+                    
+                    if (available.length === 0) break;
+                    
+                    const pick = available[Math.floor(Math.random() * available.length)];
+                    
+                    if (pick === 'kanji') {
+                        const k = kanjiPool[kanjiIndex++];
+                        const o = k.onyomi && k.onyomi.trim() !== '—' && k.onyomi.trim() !== '-' ? k.onyomi.trim() : '';
+                        const ku = k.kunyomi && k.kunyomi.trim() !== '—' && k.kunyomi.trim() !== '-' ? k.kunyomi.trim() : '';
+                        let reading = (o && ku) ? `${o} / ${ku}` : (o || ku || '???');
 
-                            activeQuestions.push({
-                                type: 'kanji',
-                                item: k,
-                                target: k.kanji,
-                                clue: `Kanji (Arti: ${k.arti})`,
-                                meaning: k.arti,
-                                correctAnswer: reading,
-                                distractorPool: rawKanjis.map(item => {
-                                    const o_i = item.onyomi && item.onyomi.trim() !== '—' && item.onyomi.trim() !== '-' ? item.onyomi.trim() : '';
-                                    const ku_i = item.kunyomi && item.kunyomi.trim() !== '—' && item.kunyomi.trim() !== '-' ? item.kunyomi.trim() : '';
-                                    return (o_i && ku_i) ? `${o_i} / ${ku_i}` : (o_i || ku_i || '');
-                                }).filter(r => r !== '' && r !== reading)
-                            });
-                        }
-                    } else {
-                        if (kotobaIndex < kotobaPool.length) {
-                            const kt = kotobaPool[kotobaIndex++];
-                            activeQuestions.push({
-                                type: 'kotoba',
-                                item: kt,
-                                target: kt.kanji && kt.kanji.trim() !== '—' && kt.kanji.trim() !== '-' ? kt.kanji : kt.japanese,
-                                clue: `Kosakata (Arti: ${kt.arti_indonesia})`,
-                                meaning: kt.arti_indonesia,
-                                correctAnswer: kt.japanese,
-                                distractorPool: rawKotobas.map(item => item.japanese).filter(j => j !== kt.japanese)
-                            });
-                        }
+                        activeQuestions.push({
+                            type: 'kanji',
+                            item: k,
+                            target: k.kanji,
+                            clue: `Pilih cara baca yang tepat`,
+                            meaning: k.arti,
+                            correctAnswer: reading,
+                            distractorPool: rawKanjis.map(item => {
+                                const o_i = item.onyomi && item.onyomi.trim() !== '—' && item.onyomi.trim() !== '-' ? item.onyomi.trim() : '';
+                                const ku_i = item.kunyomi && item.kunyomi.trim() !== '—' && item.kunyomi.trim() !== '-' ? item.kunyomi.trim() : '';
+                                return (o_i && ku_i) ? `${o_i} / ${ku_i}` : (o_i || ku_i || '');
+                            }).filter(r => r !== '' && r !== reading)
+                        });
+                    } else if (pick === 'kotoba') {
+                        const kt = kotobaPool[kotobaIndex++];
+                        activeQuestions.push({
+                            type: 'kotoba',
+                            item: kt,
+                            target: kt.kanji && kt.kanji.trim() !== '—' && kt.kanji.trim() !== '-' ? kt.kanji : kt.japanese,
+                            clue: `Pilih cara baca yang tepat`,
+                            meaning: kt.arti_indonesia,
+                            correctAnswer: kt.japanese,
+                            distractorPool: rawKotobas.map(item => item.japanese).filter(j => j !== kt.japanese)
+                        });
+                    } else if (pick === 'bunpo') {
+                        const b = bunpoPool[bunpoIndex++];
+                        activeQuestions.push({
+                            type: 'bunpo',
+                            item: b,
+                            target: b.pattern,
+                            clue: `Tata Bahasa`,
+                            meaning: b.meaning,
+                            correctAnswer: b.meaning,
+                            distractorPool: rawBunpos.map(item => item.meaning).filter(m => m !== b.meaning)
+                        });
                     }
                 }
             }
 
-            // Hide setup, show gameplay screen
             document.getElementById('setupScreen').style.display = 'none';
             document.getElementById('gameplayScreen').style.display = 'flex';
-            
             loadQuestion();
         }
 
-        // Load current active question
         function loadQuestion() {
             hasAnswered = false;
             document.getElementById('btnNext').style.display = 'none';
             
-            // Enable choices and reset colors
             const optionBtns = document.querySelectorAll('.choice-btn');
             optionBtns.forEach(btn => {
                 btn.disabled = false;
@@ -1042,18 +926,17 @@
 
             const q = activeQuestions[currentQuestionIndex];
             
-            // Update HUD values
             document.getElementById('currentNum').textContent = String(currentQuestionIndex + 1).padStart(2, '0');
             document.getElementById('totalNum').textContent = String(activeQuestions.length).padStart(2, '0');
             document.getElementById('activeMode').textContent = q.type.toUpperCase();
-            document.getElementById('currentScore').textContent = String(score).padStart(3, '0');
+            document.getElementById('currentScore').textContent = String(score);
 
-            // Set main target and clues
             document.getElementById('targetChar').textContent = q.target;
-            document.getElementById('targetChar').style.fontSize = q.target.length > 5 ? '2.5rem' : '4.5rem';
+            document.getElementById('targetChar').style.fontSize = q.target.length > 5 ? '2.5rem' : '5rem';
             document.getElementById('targetClue').textContent = q.clue;
+            document.getElementById('meaningReveal').style.display = 'none';
+            document.getElementById('meaningReveal').innerHTML = '';
 
-            // Generate option choices (1 correct + 3 unique random distractors)
             let uniqueDistractors = [...new Set(q.distractorPool)];
             shuffle(uniqueDistractors);
             
@@ -1062,28 +945,23 @@
                 choices.push(uniqueDistractors[i]);
             }
             
-            // If distractors are empty or missing, fill up with dummy readings
             while (choices.length < 4) {
                 choices.push('---');
             }
 
-            // Shuffle option positions
             shuffle(choices);
-
-            // Bind values to UI buttons
             q.choices = choices;
+
             for (let i = 0; i < 4; i++) {
                 document.getElementById(`choice${i}`).textContent = choices[i];
             }
 
-            // Update Progress Bar
             const total = activeQuestions.length;
             const progressVal = (currentQuestionIndex / total) * 100;
             document.getElementById('progressBarFill').style.width = `${progressVal}%`;
             document.getElementById('progressPercent').textContent = `${Math.round(progressVal)}%`;
         }
 
-        // Process answer submittal
         function submitAnswer(selectedIndex) {
             if (hasAnswered) return;
             hasAnswered = true;
@@ -1091,11 +969,55 @@
             const q = activeQuestions[currentQuestionIndex];
             const selectedText = q.choices[selectedIndex];
             const isCorrect = (selectedText === q.correctAnswer);
-
             const optionBtns = document.querySelectorAll('.choice-btn');
             
-            // Disable all options
             optionBtns.forEach(btn => btn.disabled = true);
+
+            // Munculkan furigana/jawaban benar di atas kanjinya
+            let displayHTML = q.target;
+            
+            if (q.type === 'kotoba' || q.type === 'kanji') {
+                let t = q.target;
+                let r = q.correctAnswer;
+                
+                if (t !== r) {
+                    let sLen = 0;
+                    let mLen = Math.min(t.length, r.length);
+                    for (let i = 1; i <= mLen; i++) {
+                        if (t[t.length - i] === r[r.length - i]) {
+                            sLen = i;
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    let pLen = 0;
+                    for (let i = 0; i < mLen - sLen; i++) {
+                        if (t[i] === r[i]) {
+                            pLen++;
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    let bTarget = t.substring(pLen, t.length - sLen);
+                    let bReading = r.substring(pLen, r.length - sLen);
+                    let pref = t.substring(0, pLen);
+                    let suff = t.substring(t.length - sLen);
+                    
+                    if (bTarget.length > 0 && bReading.length > 0) {
+                        displayHTML = `${pref}<ruby>${bTarget}<rt style="color: var(--primary); font-size: 0.25em; font-weight: 600; padding-bottom: 8px;">${bReading}</rt></ruby>${suff}`;
+                    } else {
+                        displayHTML = `<ruby>${t}<rt style="color: var(--primary); font-size: 0.25em; font-weight: 600; padding-bottom: 8px;">${r}</rt></ruby>`;
+                    }
+                }
+            }
+
+            document.getElementById('targetChar').innerHTML = displayHTML;
+
+            const meaningReveal = document.getElementById('meaningReveal');
+            meaningReveal.innerHTML = `Arti: <span style="color: var(--primary);">${q.meaning}</span>`;
+            meaningReveal.style.display = 'inline-block';
 
             if (isCorrect) {
                 triggerSound('correct');
@@ -1104,7 +1026,6 @@
             } else {
                 triggerSound('incorrect');
                 optionBtns[selectedIndex].classList.add('incorrect');
-                // Highlight the correct one
                 optionBtns.forEach((btn, index) => {
                     if (q.choices[index] === q.correctAnswer) {
                         btn.classList.add('correct');
@@ -1112,10 +1033,8 @@
                 });
             }
 
-            // Update score display in real time
-            document.getElementById('currentScore').textContent = String(score).padStart(3, '0');
+            document.getElementById('currentScore').textContent = String(score);
 
-            // Log telemetry data
             telemetryLog.push({
                 feedId: String(currentQuestionIndex + 1).padStart(2, '0'),
                 target: q.target,
@@ -1125,15 +1044,12 @@
                 status: isCorrect ? 'CORRECT' : 'INCORRECT'
             });
 
-            // Reveal Next Sequence button
             document.getElementById('btnNext').style.display = 'block';
         }
 
-        // Navigate to next question
         function nextQuestion() {
             triggerSound('click');
             currentQuestionIndex++;
-            
             if (currentQuestionIndex < activeQuestions.length) {
                 loadQuestion();
             } else {
@@ -1141,51 +1057,43 @@
             }
         }
 
-        // Render evaluation summary screen
         function showSummary() {
-            // Update Progress bar to 100%
             document.getElementById('progressBarFill').style.width = '100%';
             document.getElementById('progressPercent').textContent = '100%';
 
-            // Calculate metrics
             const totalQ = activeQuestions.length;
             const correctCount = telemetryLog.filter(t => t.status === 'CORRECT').length;
-            const accuracy = Math.round((correctCount / totalQ) * 100);
+            const accuracy = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
 
-            let rating = 'D_CLASS';
-            if (accuracy === 100) rating = 'S_CLASS';
-            else if (accuracy >= 80) rating = 'A_CLASS';
-            else if (accuracy >= 60) rating = 'B_CLASS';
-            else if (accuracy >= 40) rating = 'C_CLASS';
+            let rating = 'D';
+            if (accuracy === 100) rating = 'S';
+            else if (accuracy >= 80) rating = 'A';
+            else if (accuracy >= 60) rating = 'B';
+            else if (accuracy >= 40) rating = 'C';
 
-            // Set metric texts
-            document.getElementById('finalScore').textContent = String(score).padStart(3, '0');
+            document.getElementById('finalScore').textContent = String(score);
             document.getElementById('finalAccuracy').textContent = `${accuracy}%`;
             document.getElementById('syncRating').textContent = rating;
 
-            // Render telemetry table rows
             const tbody = document.getElementById('telemetryRows');
             tbody.innerHTML = '';
             
             telemetryLog.forEach(row => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${row.feedId}</td>
                     <td style="font-weight: 700; font-family: 'Noto Sans JP', sans-serif;">${row.target}</td>
                     <td>${row.meaning}</td>
-                    <td style="color: ${row.status === 'CORRECT' ? 'var(--primary-green)' : 'var(--primary-red)'}; font-weight:700;">${row.userInput}</td>
-                    <td style="color: var(--primary-green); font-weight: 700;">${row.correct}</td>
-                    <td><span class="status-badge ${row.status.toLowerCase()}">${row.status}</span></td>
+                    <td style="color: ${row.status === 'CORRECT' ? 'var(--success)' : 'var(--error)'}; font-weight:600;">${row.userInput}</td>
+                    <td style="color: var(--success); font-weight: 600;">${row.correct}</td>
+                    <td><span class="status-badge ${row.status === 'CORRECT' ? 'correct' : 'incorrect'}">${row.status === 'CORRECT' ? 'BENAR' : 'SALAH'}</span></td>
                 `;
                 tbody.appendChild(tr);
             });
 
-            // Transition panels
             document.getElementById('gameplayScreen').style.display = 'none';
             document.getElementById('summaryScreen').style.display = 'flex';
         }
 
-        // Reset state and return to setup screen
         function returnToSetup() {
             triggerSound('click');
             document.getElementById('summaryScreen').style.display = 'none';

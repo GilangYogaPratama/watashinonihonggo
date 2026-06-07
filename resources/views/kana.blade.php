@@ -28,7 +28,9 @@
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-main);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow-x: hidden;
             color: var(--text-main);
             min-height: 100vh;
             display: flex;

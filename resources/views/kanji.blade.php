@@ -3,96 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N4 Kanji</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+    <title>Belajar Kanji N4 - Watashi no Nihongo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #fcfcfc;
-            --bg-grid: #eeeeee;
-            --primary: #ef4444;
-            --accent-yellow: #facc15;
-            --accent-gray: #94a3b8;
-            --text-main: #334155;
+            --bg-main: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-main: #0f172a;
             --text-muted: #64748b;
+            --border-color: rgba(226, 232, 240, 0.8);
+            --primary: #ef4444; /* Red accent for N4 Kanji */
+            --primary-hover: #dc2626;
+            --indigo: #6366f1;
+            --indigo-hover: #4f46e5;
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: var(--bg-main);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow-x: hidden;
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            touch-action: manipulation;
+            padding: 2rem;
             user-select: none;
-        }
-
-        .background-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--bg-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
         }
 
         .container {
             width: 100%;
-            max-width: 700px;
-            padding: 2rem;
+            max-width: 600px;
             z-index: 10;
         }
 
         .nav-header {
             display: flex;
             justify-content: flex-start;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .nav-back {
-            color: var(--accent-gray);
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .nav-back:hover { color: var(--primary); }
+        .nav-back:hover {
+            color: var(--indigo);
+        }
+
+        .nav-back svg {
+            margin-right: 6px;
+        }
 
         .header-section {
-            border-bottom: 4px solid var(--primary);
-            padding-bottom: 0.8rem;
-            margin-bottom: 3rem;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        h1 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--primary); }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .level-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: #fee2e2;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
         .flashcard-container {
             perspective: 1500px;
             width: 100%;
-            height: 420px;
+            height: 380px;
             margin-bottom: 2rem;
-        }
-
-        @media (max-height: 700px) {
-            .flashcard-container { height: 350px; }
-            .kanji-char { font-size: 5rem !important; }
         }
 
         .flashcard {
@@ -104,32 +112,35 @@
             cursor: pointer;
         }
 
-        .flashcard.is-flipped { transform: rotateY(180deg); }
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
 
         .card-face {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            background: #fff;
-            border: 1px solid #e2e8f0;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
-            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.02);
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05), 0 10px 15px -5px rgba(0, 0, 0, 0.02);
         }
 
-        .card-face.back { transform: rotateY(180deg); }
-
-        .accent-tl { position: absolute; top: 15px; left: 15px; width: 15px; height: 15px; border-top: 3px solid var(--accent-gray); border-left: 3px solid var(--accent-gray); }
-        .accent-br { position: absolute; bottom: 15px; right: 15px; width: 15px; height: 15px; border-bottom: 3px solid var(--accent-gray); border-right: 3px solid var(--accent-gray); }
-        .accent-yellow-top { position: absolute; top: 0; left: 10%; width: 50px; height: 6px; background: var(--accent-yellow); }
+        .card-face.back {
+            transform: rotateY(180deg);
+        }
 
         .kanji-char {
             font-family: 'Noto Sans JP', sans-serif;
-            font-size: 7rem;
+            font-size: 7.5rem;
             font-weight: 900;
             color: var(--text-main);
             text-align: center;
@@ -140,67 +151,107 @@
             flex-direction: column;
             gap: 1rem;
             width: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .reading-row {
             display: flex;
-            align-items: center;
-            gap: 2rem;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         .reading-label {
-            font-size: 0.65rem;
-            color: var(--accent-gray);
-            width: 60px;
-            text-align: right;
-            letter-spacing: 2px;
-            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            width: 70px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .reading-val {
-            font-size: 1.3rem;
-            color: var(--primary);
+            font-size: 1.25rem;
+            color: var(--text-main);
             font-weight: 700;
             font-family: 'Noto Sans JP', sans-serif;
         }
 
         .meaning {
-            font-size: 1.4rem;
-            color: var(--text-main);
+            font-size: 1.25rem;
+            color: var(--primary);
             font-weight: 700;
-            padding: 1rem 2rem;
-            background: rgba(239, 68, 68, 0.05);
-            border-left: 6px solid var(--accent-yellow);
+            padding: 0.75rem 1.5rem;
+            background: #fef2f2;
+            border-radius: 8px;
             width: 100%;
             text-align: center;
+            margin-top: 0.5rem;
         }
 
         .controls {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
             width: 100%;
         }
 
         .btn-action {
-            background: #fff;
-            border: 1px solid var(--text-main);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 1rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            padding: 0.875rem;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: 700;
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-action:hover { border-color: var(--primary); background: #f8fafc; }
-        .btn-reveal { background: var(--primary); color: #fff; border: none; }
+        .btn-action:hover {
+            border-color: var(--primary);
+            background: #fafafa;
+        }
+
+        .btn-reveal {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-reveal:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-master {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            color: #ffffff;
+            background: var(--indigo);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-master:hover {
+            background-color: var(--indigo-hover);
+        }
 
         .progress-section {
-            margin-top: 3rem;
+            margin-top: 2rem;
             width: 100%;
         }
 
@@ -208,105 +259,126 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.7rem;
-            color: var(--accent-gray);
+            font-size: 0.75rem;
+            color: var(--text-muted);
             margin-bottom: 8px;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .reset-link {
-            color: var(--primary);
+            color: var(--indigo);
             cursor: pointer;
             text-decoration: underline;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .progress-bar { width: 100%; height: 6px; background: #f1f5f9; position: relative; }
-        .progress-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--primary); transition: width 0.3s; }
+        .reset-link:hover {
+            color: var(--indigo-hover);
+        }
 
-        .btn-master {
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
             position: absolute;
-            bottom: 2rem;
-            left: 2rem;
-            font-size: 0.7rem;
-            color: #fff;
+            top: 0;
+            left: 0;
+            height: 100%;
             background: var(--primary);
-            border: none;
-            padding: 5px 12px;
-            cursor: pointer;
-            font-weight: 700;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            transition: width 0.3s;
         }
-
-        .btn-master:hover { opacity: 0.9; transform: scale(1.05); }
 
         @media (max-width: 600px) {
-            .container { padding: 1rem; }
-            .header-section { margin-bottom: 1.5rem; }
-            .flashcard-container { height: 360px; margin-bottom: 1.5rem; }
-            .card-face { padding: 1.5rem; }
-            .kanji-char { font-size: 4.5rem; }
-            .reading-val { font-size: 1.1rem; }
-            .reading-row { gap: 1rem; }
-            .meaning { font-size: 1.1rem; padding: 0.8rem 1rem; }
-            .controls { gap: 0.5rem; }
-            .btn-action { padding: 0.8rem 0.5rem; font-size: 0.65rem; }
-            .btn-master { bottom: 1rem; left: 1rem; font-size: 0.65rem; padding: 4px 10px; }
-            .progress-section { margin-top: 2rem; }
+            .flashcard-container {
+                height: 350px;
+            }
+            .kanji-char {
+                font-size: 5.5rem;
+            }
+            .card-face {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="background-grid"></div>
     <div class="container">
         <nav class="nav-header">
-            <a href="{{ route('home') }}" class="nav-back"><- BACK_TO_SYNC</a>
+            <a href="{{ route('home') }}" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Kembali ke Dashboard
+            </a>
         </nav>
+
         <div class="header-section">
-            <h1 style="font-family: 'Orbitron';">KANJI_N4</h1>
-            <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-muted); font-family: 'Orbitron'; font-weight: 700;">ANALYSIS_ONGOING</div>
+            <h1>Belajar Kanji N4</h1>
+            <span class="level-badge">JLPT N4</span>
         </div>
+
         <div class="flashcard-container">
             <div class="flashcard" id="flashcard" onclick="toggleReveal()">
                 <!-- Front -->
                 <div class="card-face front">
-                    <div class="accent-tl"></div><div class="accent-br"></div>
-                    <div class="accent-yellow-top"></div>
                     <div class="kanji-char" id="kanjiFront">---</div>
                 </div>
                 <!-- Back -->
                 <div class="card-face back">
-                    <div class="accent-tl"></div><div class="accent-br"></div>
-                    <div class="accent-yellow-top"></div>
                     <div class="readings-box">
-                        <div class="reading-row"><span class="reading-label">ONYOMI</span><span class="reading-val" id="onyomiBack">---</span></div>
-                        <div class="reading-row"><span class="reading-label">KUNYOMI</span><span class="reading-val" id="kunyomiBack">---</span></div>
+                        <div class="reading-row">
+                            <span class="reading-label">Onyomi</span>
+                            <span class="reading-val" id="onyomiBack">---</span>
+                        </div>
+                        <div class="reading-row">
+                            <span class="reading-label">Kunyomi</span>
+                            <span class="reading-val" id="kunyomiBack">---</span>
+                        </div>
                     </div>
                     <div class="meaning" id="meaningBack">---</div>
                     <button class="btn-master" onclick="event.stopPropagation(); markAsMastered()">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        INGAT
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Ingat
                     </button>
                 </div>
             </div>
         </div>
+
         <div class="controls">
-            <button class="btn-action" style="font-family: 'Orbitron';" onclick="prevCard()">PREV</button>
-            <button class="btn-action btn-reveal" style="font-family: 'Orbitron';" id="btnReveal" onclick="toggleReveal()">REVEAL</button>
-            <button class="btn-action" style="font-family: 'Orbitron';" onclick="nextCard()">NEXT</button>
+            <button class="btn-action" onclick="prevCard()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Prev
+            </button>
+            <button class="btn-action btn-reveal" id="btnReveal" onclick="toggleReveal()">Reveal</button>
+            <button class="btn-action" onclick="nextCard()">
+                Next
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
         </div>
+
         <div class="progress-section">
             <div class="progress-info">
-                <span>PROGRESS_STATUS</span>
-                <span class="reset-link" onclick="resetMastery()">RESET PROGRESS</span>
-                <span id="progressCounter">000 / 000</span>
+                <span>Progres Hafalan</span>
+                <span class="reset-link" onclick="resetMastery()">Reset Progres</span>
+                <span id="progressCounter">00 / 00</span>
             </div>
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
         </div>
     </div>
 
@@ -315,9 +387,16 @@
         let kanjis = [];
         let masteredIds = JSON.parse(localStorage.getItem('mastered_kanji_n4') || '[]');
 
-        function shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; } }
+        function shuffleArray(array) { 
+            for (let i = array.length - 1; i > 0; i--) { 
+                const j = Math.floor(Math.random() * (i + 1)); 
+                [array[i], array[j]] = [array[j], array[i]]; 
+            } 
+        }
         
-        let currentIndex = 0; let isFlipped = false;
+        let currentIndex = 0; 
+        let isFlipped = false;
+        
         const flashcard = document.getElementById('flashcard');
         const kanjiFront = document.getElementById('kanjiFront');
         const onyomiBack = document.getElementById('onyomiBack');
@@ -331,7 +410,7 @@
             let remaining = allKanjis.filter(k => !masteredIds.includes(k.id));
 
             if (remaining.length === 0 && allKanjis.length > 0) {
-                alert("Selamat! Semua kanji telah diingat. Progress akan direset.");
+                alert("Selamat! Semua kanji N4 telah diingat. Progress akan direset.");
                 masteredIds = [];
                 localStorage.removeItem('mastered_kanji_n4');
                 remaining = [...allKanjis];
@@ -342,7 +421,7 @@
             currentIndex = 0;
             isFlipped = false;
             flashcard.classList.remove('is-flipped');
-            btnReveal.textContent = 'REVEAL';
+            btnReveal.textContent = 'Reveal';
             updateCardContent();
         }
 
@@ -372,9 +451,9 @@
             }
             const current = kanjis[currentIndex];
             kanjiFront.textContent = current.kanji;
-            onyomiBack.textContent = current.onyomi || '---';
-            kunyomiBack.textContent = current.kunyomi || '---';
-            meaningBack.textContent = current.arti;
+            onyomiBack.textContent = current.onyomi || '—';
+            kunyomiBack.textContent = current.kunyomi || '—';
+            meaningBack.textContent = current.arti || '—';
             
             const total = kanjis.length;
             const currentNum = currentIndex + 1;
@@ -382,9 +461,27 @@
             progressFill.style.width = `${(currentNum / total) * 100}%`;
         }
 
-        function toggleReveal() { isFlipped = !isFlipped; flashcard.classList.toggle('is-flipped', isFlipped); btnReveal.textContent = isFlipped ? 'SECURE' : 'REVEAL'; }
-        function nextCard() { isFlipped = false; flashcard.classList.remove('is-flipped'); btnReveal.textContent = 'REVEAL'; currentIndex = (currentIndex + 1) % kanjis.length; updateCardContent(); }
-        function prevCard() { isFlipped = false; flashcard.classList.remove('is-flipped'); btnReveal.textContent = 'REVEAL'; currentIndex = (currentIndex - 1 + kanjis.length) % kanjis.length; updateCardContent(); }
+        function toggleReveal() { 
+            isFlipped = !isFlipped; 
+            flashcard.classList.toggle('is-flipped', isFlipped); 
+            btnReveal.textContent = isFlipped ? 'Hide' : 'Reveal'; 
+        }
+        
+        function nextCard() { 
+            isFlipped = false; 
+            flashcard.classList.remove('is-flipped'); 
+            btnReveal.textContent = 'Reveal'; 
+            currentIndex = (currentIndex + 1) % kanjis.length; 
+            updateCardContent(); 
+        }
+        
+        function prevCard() { 
+            isFlipped = false; 
+            flashcard.classList.remove('is-flipped'); 
+            btnReveal.textContent = 'Reveal'; 
+            currentIndex = (currentIndex - 1 + kanjis.length) % kanjis.length; 
+            updateCardContent(); 
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') { e.preventDefault(); toggleReveal(); }

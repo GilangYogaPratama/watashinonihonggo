@@ -10,6 +10,7 @@ class Kotoba extends Model
     use HasFactory;
 
     protected $fillable = [
+        'level',
         'bab',
         'japanese',
         'kanji',

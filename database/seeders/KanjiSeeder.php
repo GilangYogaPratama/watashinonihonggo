@@ -44,6 +44,7 @@ class KanjiSeeder extends Seeder
                 'onyomi' => $data[1] ?? null,
                 'kunyomi' => $data[2] ?? null,
                 'arti' => $data[3] ?? '',
+                'level' => 'N4',
             ]);
             $rowCount++;
         }

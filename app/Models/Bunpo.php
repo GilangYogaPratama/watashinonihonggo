@@ -9,5 +9,5 @@ class Bunpo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['pattern', 'meaning', 'category', 'example'];
+    protected $fillable = ['level', 'pattern', 'meaning', 'category', 'example'];
 }

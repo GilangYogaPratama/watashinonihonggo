@@ -19,6 +19,7 @@ use App\Http\Controllers\KanjiController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ParagraphController;
 use App\Http\Controllers\KanaController;
+use App\Http\Controllers\N3KanjiController;
 
 Route::get('/', function () {
     return view('home');
@@ -30,3 +31,11 @@ Route::get('/kanji', [KanjiController::class, 'index'])->name('kanji');
 Route::get('/quiz', [QuizController::class, 'index'])->name('quiz');
 Route::get('/reading', [ParagraphController::class, 'index'])->name('reading');
 Route::get('/kana', [KanaController::class, 'index'])->name('kana');
+
+// N3 Section Routes
+Route::get('/n3/kanji', [N3KanjiController::class, 'index'])->name('n3.kanji');
+Route::get('/n3/kotoba', [App\Http\Controllers\KotobaController::class, 'indexN3'])->name('n3.kotoba');
+Route::get('/n3/bunpo', [App\Http\Controllers\BunpoController::class, 'indexN3'])->name('n3.bunpo');
+Route::get('/n3/input', [N3KanjiController::class, 'create'])->name('n3.input');
+Route::post('/n3/input', [N3KanjiController::class, 'store'])->name('n3.input.store');
+Route::get('/n3/quiz', [N3KanjiController::class, 'quiz'])->name('n3.quiz');

@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N4 Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>Watashi no Nihongo - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #fcfcfc;
-            --bg-grid: #eeeeee;
-            --primary-blue: #3b82f6;
-            --primary-green: #22c55e;
-            --primary-red: #ef4444;
-            --primary-purple: #a855f7;
-            --primary-cyan: #06b6d4;
-            --primary-orange: #f97316;
-            --accent-yellow: #facc15;
-            --accent-gray: #94a3b8;
-            --text-main: #334155;
+            --bg-main: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-main: #0f172a;
             --text-muted: #64748b;
+            --border-color: rgba(226, 232, 240, 0.8);
+            
+            /* Clean vibrant palette */
+            --color-kanji: #f43f5e;     /* Rose */
+            --color-kotoba: #10b981;    /* Emerald */
+            --color-bunpo: #3b82f6;     /* Blue */
+            --color-kana: #f59e0b;      /* Amber */
+            --color-quiz: #8b5cf6;      /* Violet */
+            --color-reading: #06b6d4;   /* Cyan */
+            --color-n3-input: #6366f1;  /* Indigo */
         }
 
         * {
@@ -28,108 +30,129 @@
         }
 
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-main);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
             position: relative;
             overflow-x: hidden;
         }
 
-        .background-grid {
+        /* Decorative background blobs */
+        body::before, body::after {
+            content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--bg-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
-            background-size: 40px 40px;
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            filter: blur(100px);
             z-index: -1;
+            opacity: 0.5;
+            animation: pulse-blob 10s infinite alternate;
+        }
+
+        body::before {
+            top: -10vw;
+            left: -10vw;
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        body::after {
+            bottom: -10vw;
+            right: -10vw;
+            background: rgba(244, 63, 94, 0.15);
+            animation-delay: -5s;
+        }
+
+        @keyframes pulse-blob {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(20px, 20px); }
         }
 
         .dashboard-container {
             width: 100%;
-            max-width: 1200px;
-            position: relative;
+            max-width: 1100px;
             z-index: 10;
-            padding-top: 2rem;
         }
 
-        /* Header Styles */
+        /* Header */
         .header-wrapper {
-            margin-bottom: 3rem;
-            border-left: 4px solid var(--accent-yellow);
-            padding-left: 1rem;
+            margin-bottom: 4rem;
+            text-align: center;
         }
 
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            letter-spacing: 4px;
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
             color: var(--text-main);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .system-status {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.75rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        /* Dashboard Sections */
+        /* Sections */
         .dashboard-section {
-            margin-bottom: 4rem;
+            margin-bottom: 4.5rem;
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 900;
+            font-size: 1.35rem;
+            font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
+            letter-spacing: -0.5px;
         }
 
         .section-title::before {
             content: '';
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--text-main);
+            width: 6px;
+            height: 24px;
+            background: linear-gradient(to bottom, #6366f1, #3b82f6);
+            border-radius: 8px;
             margin-right: 12px;
         }
 
-        /* Menu Grid */
+        /* Grid Layout */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .menu-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 600px) {
-            body { padding: 1.2rem; }
-            h1 { font-size: 1.8rem; letter-spacing: 2px; }
-            .menu-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-            .card { padding: 1.8rem 1.2rem; }
-            .card-icon { font-size: 3.5rem; margin-bottom: 0.5rem; }
-            .header-wrapper { margin-bottom: 2rem; }
-            .dashboard-section { margin-bottom: 2.5rem; }
+            body { padding: 2rem 1.5rem; }
+            h1 { font-size: 2rem; }
+            .menu-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         }
 
-        /* Card Styles */
+        /* Minimalist Card Design */
         .card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 2.5rem 1.5rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -137,170 +160,180 @@
             text-decoration: none;
             color: var(--text-main);
             position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
             overflow: hidden;
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, transparent, rgba(0,0,0,0.01));
-            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--card-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px) translateX(-5px);
-            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.04);
-            border-color: var(--card-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
+            border-color: transparent;
         }
 
-        /* Module Colors */
-        .card.kanji { --card-color: var(--primary-red); }
-        .card.kotoba { --card-color: var(--primary-green); }
-        .card.bunpo { --card-color: var(--primary-blue); }
-        .card.kana { --card-color: var(--primary-orange); }
-        .card.quiz { --card-color: var(--primary-purple); }
-        .card.reading { --card-color: var(--primary-cyan); }
-
-        /* Techy Accents */
-        .accent-corner {
-            position: absolute;
-            width: 10px; height: 10px;
-            border: 2px solid var(--accent-gray);
-            transition: all 0.3s ease;
-            z-index: 2;
+        .card:hover::before {
+            transform: scaleX(1);
         }
 
-        .tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-        .tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-        .bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-        .br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+        /* Card color variables */
+        .card.kanji { --card-color: var(--color-kanji); }
+        .card.kotoba { --card-color: var(--color-kotoba); }
+        .card.bunpo { --card-color: var(--color-bunpo); }
+        .card.kana { --card-color: var(--color-kana); }
+        .card.quiz { --card-color: var(--color-quiz); }
+        .card.reading { --card-color: var(--color-reading); }
+        .card.n3input { --card-color: var(--color-n3-input); }
 
-        .card:hover .accent-corner {
-            border-color: var(--card-color);
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
 
-        .accent-bar {
-            position: absolute;
-            top: 0;
-            width: 40px;
-            height: 4px;
-            background: var(--card-color);
-            transition: width 0.3s ease;
-            z-index: 2;
-        }
-
-        .card:hover .accent-bar {
-            width: 100%;
-        }
-
-        /* Content */
         .card-icon {
-            font-size: 4.5rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 4rem;
             font-weight: 900;
-            color: var(--card-color);
-            margin-bottom: 1rem;
-            z-index: 2;
+            background: linear-gradient(135deg, var(--card-color), #0f172a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.25rem;
+            transition: transform 0.4s;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Stagger animation delays */
+        .card:nth-child(2n) .card-icon { animation-delay: 0.5s; }
+        .card:nth-child(3n) .card-icon { animation-delay: 1s; }
+        .card:nth-child(4n) .card-icon { animation-delay: 1.5s; }
+
+        .card:hover .card-icon {
+            transform: scale(1.1) translateY(-5px);
+            animation-play-state: paused;
         }
 
         .card-title {
-            font-family: 'Noto Sans JP', sans-serif;
             font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            z-index: 2;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
         }
 
         .status-badge {
-            margin-top: 1rem;
-            padding: 4px 10px;
-            background: var(--bg-grid);
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--card-color);
-            letter-spacing: 1px;
-            z-index: 2;
+            background: rgba(255,255,255, 0.5);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .card:hover .status-badge {
             background: var(--card-color);
-            color: #fff;
+            color: #ffffff;
+            border-color: transparent;
         }
     </style>
 </head>
 <body>
-    <div class="background-grid"></div>
-
     <div class="dashboard-container">
+        
         <div class="header-wrapper">
-            <h1>Sistem N4</h1>
-            <span class="system-status">Sinkronisasi Sistem Selesai</span>
+            <h1>Watashi no Nihongo</h1>
+            <span class="system-status">Media Pembelajaran Bahasa Jepang Mandiri</span>
         </div>
 
-        <!-- Section 1: Study -->
+        <!-- Section N3 -->
         <section class="dashboard-section">
-            <h2 class="section-title">Belajar</h2>
+            <h2 class="section-title">JLPT N3</h2>
             <div class="menu-grid">
-                <a href="{{ route('kanji') }}" class="card kanji">
-                    <div class="accent-corner tl"></div><div class="accent-corner tr"></div>
-                    <div class="accent-corner bl"></div><div class="accent-corner br"></div>
-                    <div class="accent-bar"></div>
+                <a href="{{ route('n3.kanji') }}" class="card kanji">
                     <div class="card-icon">漢</div>
-                    <h2 class="card-title">Kanji</h2>
-                    <div class="status-badge">Modul</div>
+                    <h2 class="card-title">Kanji N3</h2>
+                    <div class="status-badge">Belajar</div>
                 </a>
 
-                <a href="{{ route('kotoba') }}" class="card kotoba">
-                    <div class="accent-corner tl"></div><div class="accent-corner tr"></div>
-                    <div class="accent-corner bl"></div><div class="accent-corner br"></div>
-                    <div class="accent-bar"></div>
+                <a href="{{ route('n3.kotoba') }}" class="card kotoba">
                     <div class="card-icon">言</div>
-                    <h2 class="card-title">Kosakata</h2>
-                    <div class="status-badge">Modul</div>
+                    <h2 class="card-title">Kosakata N3</h2>
+                    <div class="status-badge">Belajar</div>
                 </a>
 
-                <a href="{{ route('bunpo') }}" class="card bunpo">
-                    <div class="accent-corner tl"></div><div class="accent-corner tr"></div>
-                    <div class="accent-corner bl"></div><div class="accent-corner br"></div>
-                    <div class="accent-bar"></div>
+                <a href="{{ route('n3.bunpo') }}" class="card bunpo">
                     <div class="card-icon">文</div>
-                    <h2 class="card-title">Tata Bahasa</h2>
-                    <div class="status-badge">Modul</div>
+                    <h2 class="card-title">Tata Bahasa N3</h2>
+                    <div class="status-badge">Belajar</div>
+                </a>
+
+                <a href="{{ route('n3.input') }}" class="card n3input">
+                    <div class="card-icon">筆</div>
+                    <h2 class="card-title">Input N3</h2>
+                    <div class="status-badge">Dashboard</div>
+                </a>
+
+                <a href="{{ route('quiz', ['level' => 'N3']) }}" class="card quiz">
+                    <div class="card-icon">考</div>
+                    <h2 class="card-title">Latihan N3</h2>
+                    <div class="status-badge">Latihan</div>
                 </a>
             </div>
         </section>
 
-        <!-- Section 2: Practice -->
+        <!-- Section N4 -->
         <section class="dashboard-section">
-            <h2 class="section-title">Latihan</h2>
+            <h2 class="section-title">JLPT N4</h2>
             <div class="menu-grid">
-                <a href="{{ route('kana') }}" class="card kana">
-                    <div class="accent-corner tl"></div><div class="accent-corner tr"></div>
-                    <div class="accent-corner bl"></div><div class="accent-corner br"></div>
-                    <div class="accent-bar"></div>
-                    <div class="card-icon">あ</div>
-                    <h2 class="card-title">Huruf & Pelafalan</h2>
-                    <div class="status-badge">Modul</div>
+                <a href="{{ route('kanji') }}" class="card kanji">
+                    <div class="card-icon">漢</div>
+                    <h2 class="card-title">Kanji N4</h2>
+                    <div class="status-badge">Belajar</div>
                 </a>
 
-                <a href="{{ route('quiz') }}" class="card quiz">
-                    <div class="accent-corner tl"></div><div class="accent-corner tr"></div>
-                    <div class="accent-corner bl"></div><div class="accent-corner br"></div>
-                    <div class="accent-bar"></div>
-                    <div class="card-icon">問</div>
-                    <h2 class="card-title">Ulasan</h2>
-                    <div class="status-badge">Modul</div>
+                <a href="{{ route('kotoba') }}" class="card kotoba">
+                    <div class="card-icon">言</div>
+                    <h2 class="card-title">Kosakata N4</h2>
+                    <div class="status-badge">Belajar</div>
+                </a>
+
+                <a href="{{ route('bunpo') }}" class="card bunpo">
+                    <div class="card-icon">文</div>
+                    <h2 class="card-title">Tata Bahasa N4</h2>
+                    <div class="status-badge">Belajar</div>
+                </a>
+
+                <a href="{{ route('kana') }}" class="card kana">
+                    <div class="card-icon">あ</div>
+                    <h2 class="card-title">Hiragana & Katakana</h2>
+                    <div class="status-badge">Belajar</div>
                 </a>
 
                 <a href="{{ route('reading') }}" class="card reading">
-                    <div class="accent-corner tl"></div><div class="accent-corner tr"></div>
-                    <div class="accent-corner bl"></div><div class="accent-corner br"></div>
-                    <div class="accent-bar"></div>
                     <div class="card-icon">読</div>
                     <h2 class="card-title">Membaca</h2>
-                    <div class="status-badge">Modul</div>
+                    <div class="status-badge">Belajar</div>
+                </a>
+
+                <a href="{{ route('quiz', ['level' => 'N4']) }}" class="card quiz">
+                    <div class="card-icon">問</div>
+                    <h2 class="card-title">Latihan N4</h2>
+                    <div class="status-badge">Latihan</div>
                 </a>
             </div>
         </section>
