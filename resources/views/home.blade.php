@@ -21,6 +21,10 @@
             --color-quiz: #8b5cf6;      /* Violet */
             --color-reading: #06b6d4;   /* Cyan */
             --color-n3-input: #6366f1;  /* Indigo */
+            --color-tebak-on: #f97316;  /* Orange */
+            --color-tebak-kun: #ec4899; /* Pink */
+            --color-cocok-on: #8b5cf6;  /* Violet */
+            --color-cocok-kun: #06b6d4; /* Cyan */
         }
 
         * {
@@ -196,6 +200,48 @@
         .card.quiz { --card-color: var(--color-quiz); }
         .card.reading { --card-color: var(--color-reading); }
         .card.n3input { --card-color: var(--color-n3-input); }
+        .card.tebak-on { --card-color: var(--color-tebak-on); }
+        .card.tebak-kun { --card-color: var(--color-tebak-kun); }
+        .card.cocok-on { --card-color: var(--color-cocok-on); }
+        .card.cocok-kun { --card-color: var(--color-cocok-kun); }
+
+        /* Game card: div-based (not a link itself) */
+        .game-card {
+            cursor: default;
+        }
+        .game-card:hover {
+            transform: translateY(-6px);
+        }
+        .card-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .level-select {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .level-btn {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--card-color);
+            border: 1.5px solid var(--card-color);
+            transition: all 0.25s;
+            letter-spacing: 0.5px;
+        }
+        .level-btn:hover {
+            background: var(--card-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
 
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -259,6 +305,56 @@
             <h1>Watashi no Nihongo</h1>
             <span class="system-status">Media Pembelajaran Bahasa Jepang Mandiri</span>
         </div>
+
+        <!-- Section Game Kanji -->
+        <section class="dashboard-section">
+            <h2 class="section-title">🎮 Game Kanji</h2>
+            <div class="menu-grid">
+                <!-- Tebak Onyomi -->
+                <div class="card tebak-on game-card">
+                    <div class="card-icon">音</div>
+                    <h2 class="card-title">Tebak Onyomi</h2>
+                    <p class="card-desc">Tebak bacaan ON dari kanji</p>
+                    <div class="level-select">
+                        <a href="{{ route('game.tebak', ['level'=>'n4','type'=>'onyomi']) }}" class="level-btn">N4</a>
+                        <a href="{{ route('game.tebak', ['level'=>'n3','type'=>'onyomi']) }}" class="level-btn">N3</a>
+                    </div>
+                </div>
+
+                <!-- Tebak Kunyomi -->
+                <div class="card tebak-kun game-card">
+                    <div class="card-icon">訓</div>
+                    <h2 class="card-title">Tebak Kunyomi</h2>
+                    <p class="card-desc">Tebak bacaan KUN dari kanji</p>
+                    <div class="level-select">
+                        <a href="{{ route('game.tebak', ['level'=>'n4','type'=>'kunyomi']) }}" class="level-btn">N4</a>
+                        <a href="{{ route('game.tebak', ['level'=>'n3','type'=>'kunyomi']) }}" class="level-btn">N3</a>
+                    </div>
+                </div>
+
+                <!-- Cocok Onyomi -->
+                <div class="card cocok-on game-card">
+                    <div class="card-icon">対</div>
+                    <h2 class="card-title">Cocokkan Onyomi</h2>
+                    <p class="card-desc">Pasangkan kanji dengan onyomi</p>
+                    <div class="level-select">
+                        <a href="{{ route('game.cocok', ['level'=>'n4','type'=>'onyomi']) }}" class="level-btn">N4</a>
+                        <a href="{{ route('game.cocok', ['level'=>'n3','type'=>'onyomi']) }}" class="level-btn">N3</a>
+                    </div>
+                </div>
+
+                <!-- Cocok Kunyomi -->
+                <div class="card cocok-kun game-card">
+                    <div class="card-icon">組</div>
+                    <h2 class="card-title">Cocokkan Kunyomi</h2>
+                    <p class="card-desc">Pasangkan kanji dengan kunyomi</p>
+                    <div class="level-select">
+                        <a href="{{ route('game.cocok', ['level'=>'n4','type'=>'kunyomi']) }}" class="level-btn">N4</a>
+                        <a href="{{ route('game.cocok', ['level'=>'n3','type'=>'kunyomi']) }}" class="level-btn">N3</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Section N3 -->
         <section class="dashboard-section">

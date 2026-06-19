@@ -20,6 +20,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ParagraphController;
 use App\Http\Controllers\KanaController;
 use App\Http\Controllers\N3KanjiController;
+use App\Http\Controllers\KanjiGameController;
 
 Route::get('/', function () {
     return view('home');
@@ -39,3 +40,7 @@ Route::get('/n3/bunpo', [App\Http\Controllers\BunpoController::class, 'indexN3']
 Route::get('/n3/input', [N3KanjiController::class, 'create'])->name('n3.input');
 Route::post('/n3/input', [N3KanjiController::class, 'store'])->name('n3.input.store');
 Route::get('/n3/quiz', [N3KanjiController::class, 'quiz'])->name('n3.quiz');
+
+// Game Routes (Tebak & Cocok - Onyomi/Kunyomi)
+Route::get('/game/tebak/{level}/{type}', [KanjiGameController::class, 'tebak'])->name('game.tebak');
+Route::get('/game/cocok/{level}/{type}', [KanjiGameController::class, 'cocok'])->name('game.cocok');

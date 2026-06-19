@@ -12,8 +12,9 @@
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: rgba(226, 232, 240, 0.8);
-            --primary: #f43f5e; /* Rose accent for Kanji */
+            --primary: #f43f5e;
             --primary-hover: #e11d48;
+            --primary-light: #fff1f2;
             --indigo: #6366f1;
             --indigo-hover: #4f46e5;
         }
@@ -40,6 +41,22 @@
             user-select: none;
         }
 
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 40vw; height: 40vw;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0; opacity: 0.5;
+            animation: pulse-blob 10s infinite alternate;
+        }
+        body::before { top: -10vw; left: -10vw; background: rgba(244, 63, 94, 0.15); }
+        body::after  { bottom: -10vw; right: -10vw; background: rgba(99, 102, 241, 0.12); animation-delay: -5s; }
+        @keyframes pulse-blob {
+            0%   { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(20px, 20px); }
+        }
+
         .container {
             width: 100%;
             max-width: 600px;
@@ -61,14 +78,8 @@
             font-weight: 500;
             transition: color 0.2s;
         }
-
-        .nav-back:hover {
-            color: var(--indigo);
-        }
-
-        .nav-back svg {
-            margin-right: 6px;
-        }
+        .nav-back:hover { color: var(--indigo); }
+        .nav-back svg { margin-right: 6px; }
 
         .header-section {
             display: flex;
@@ -79,11 +90,7 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+        h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
 
         .level-badge {
             font-size: 0.75rem;
@@ -96,6 +103,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* Empty state */
         .empty-state {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -104,18 +112,8 @@
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
-
-        .empty-state h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .empty-state p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
+        .empty-state h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+        .empty-state p  { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
         .btn-link {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -127,51 +125,39 @@
             font-size: 0.9rem;
             transition: background-color 0.2s;
         }
+        .btn-link:hover { background-color: var(--indigo-hover); }
 
-        .btn-link:hover {
-            background-color: var(--indigo-hover);
-        }
-
+        /* ── FLASHCARD (no flip) ── */
         .flashcard-container {
-            perspective: 1500px;
             width: 100%;
-            height: 380px;
             margin-bottom: 2rem;
         }
 
         .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .flashcard.is-flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
             background: var(--bg-card);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2.5rem;
+            padding: 2.5rem 2.5rem 2rem;
             box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05), 0 10px 15px -5px rgba(0, 0, 0, 0.02);
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .flashcard:hover {
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.08);
         }
 
-        .card-face.back {
-            transform: rotateY(180deg);
+        /* Top accent line */
+        .flashcard::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 20px 20px 0 0;
         }
 
         .kanji-char {
@@ -179,53 +165,100 @@
             font-size: 7.5rem;
             font-weight: 900;
             color: var(--text-main);
-            text-align: center;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .tap-hint {
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── ANSWER AREA (fade in/out) ── */
+        .answer-area {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+            margin-top: 0;
+        }
+        .answer-area.visible {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 0.5rem;
         }
 
         .readings-box {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.85rem;
             width: 100%;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.25rem;
         }
 
         .reading-row {
             display: flex;
             align-items: baseline;
-            gap: 1.5rem;
+            gap: 1.25rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #f1f5f9;
         }
+        .reading-row:last-child { border-bottom: none; padding-bottom: 0; }
 
         .reading-label {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
-            width: 70px;
-            font-weight: 600;
+            width: 72px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            flex-shrink: 0;
         }
 
         .reading-val {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-main);
             font-weight: 700;
             font-family: 'Noto Sans JP', sans-serif;
+            text-align: left;
         }
 
         .meaning {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--primary);
             font-weight: 700;
-            padding: 0.75rem 1.5rem;
-            background: #fff5f5;
-            border-radius: 8px;
+            padding: 0.65rem 1.25rem;
+            background: var(--primary-light);
+            border-radius: 10px;
             width: 100%;
             text-align: center;
-            margin-top: 0.5rem;
         }
 
+        /* Ingat button */
+        .btn-master {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #ffffff;
+            background: var(--indigo);
+            border: none;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            font-family: inherit;
+        }
+        .btn-master:hover { background-color: var(--indigo-hover); }
+
+        /* ── CONTROLS ── */
         .controls {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
@@ -238,7 +271,7 @@
             border: 1px solid var(--border-color);
             color: var(--text-main);
             padding: 0.875rem;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: inherit;
             font-size: 0.9rem;
             font-weight: 600;
@@ -247,45 +280,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
+        .btn-action:hover { border-color: var(--primary); background: #fafafa; }
 
-        .btn-action:hover {
-            border-color: var(--primary);
-            background: #fafafa;
-        }
+        .btn-reveal { background: var(--primary); color: #fff; border: none; }
+        .btn-reveal:hover { background: var(--primary-hover); }
 
-        .btn-reveal {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-        }
-
-        .btn-reveal:hover {
-            background: var(--primary-hover);
-        }
-
-        .btn-master {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            font-size: 0.75rem;
-            color: #ffffff;
-            background: var(--indigo);
-            border: none;
-            padding: 6px 14px;
-            border-radius: 9999px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            transition: background-color 0.2s;
-        }
-
-        .btn-master:hover {
-            background-color: var(--indigo-hover);
-        }
-
+        /* ── PROGRESS ── */
         .progress-section {
             margin-top: 2rem;
             width: 100%;
@@ -301,44 +303,26 @@
             font-weight: 600;
         }
 
-        .reset-link {
-            color: var(--indigo);
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .reset-link:hover {
-            color: var(--indigo-hover);
-        }
+        .reset-link { color: var(--indigo); cursor: pointer; text-decoration: underline; }
+        .reset-link:hover { color: var(--indigo-hover); }
 
         .progress-bar {
             width: 100%;
             height: 6px;
             background: #e2e8f0;
             border-radius: 9999px;
-            position: relative;
             overflow: hidden;
         }
 
         .progress-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
             height: 100%;
             background: var(--primary);
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
 
         @media (max-width: 600px) {
-            .flashcard-container {
-                height: 350px;
-            }
-            .kanji-char {
-                font-size: 5.5rem;
-            }
-            .card-face {
-                padding: 1.5rem;
-            }
+            .kanji-char { font-size: 5.5rem; }
+            .flashcard  { padding: 2rem 1.5rem 1.5rem; }
         }
     </style>
 </head>
@@ -366,30 +350,34 @@
                 <a href="{{ route('n3.input') }}" class="btn-link">Input Kanji N3</a>
             </div>
         @else
+            <!-- Flashcard (single-face, no flip) -->
             <div class="flashcard-container">
                 <div class="flashcard" id="flashcard" onclick="toggleReveal()">
-                    <!-- Front -->
-                    <div class="card-face front">
-                        <div class="kanji-char" id="kanjiFront">---</div>
-                    </div>
-                    <!-- Back -->
-                    <div class="card-face back">
+                    <div class="kanji-char" id="kanjiDisplay">---</div>
+                    <div class="tap-hint" id="tapHint">Ketuk untuk melihat jawaban</div>
+
+                    <!-- Answer area: fade in/out -->
+                    <div class="answer-area" id="answerArea">
                         <div class="readings-box">
                             <div class="reading-row">
                                 <span class="reading-label">Onyomi</span>
-                                <span class="reading-val" id="onyomiBack">---</span>
+                                <span class="reading-val" id="onyomiVal">—</span>
                             </div>
                             <div class="reading-row">
                                 <span class="reading-label">Kunyomi</span>
-                                <span class="reading-val" id="kunyomiBack">---</span>
+                                <span class="reading-val" id="kunyomiVal">—</span>
+                            </div>
+                            <div class="reading-row">
+                                <span class="reading-label">Arti</span>
+                                <span class="reading-val" id="artiVal">—</span>
                             </div>
                         </div>
-                        <div class="meaning" id="meaningBack">---</div>
+                        <div class="meaning" id="meaningVal">—</div>
                         <button class="btn-master" onclick="event.stopPropagation(); markAsMastered()">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Ingat
+                            Tandai Ingat
                         </button>
                     </div>
                 </div>
@@ -397,16 +385,16 @@
 
             <div class="controls">
                 <button class="btn-action" onclick="prevCard()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                     Prev
                 </button>
-                <button class="btn-action btn-reveal" id="btnReveal" onclick="toggleReveal()">Reveal</button>
+                <button class="btn-action btn-reveal" id="btnReveal" onclick="toggleReveal()">Tampilkan</button>
                 <button class="btn-action" onclick="nextCard()">
                     Next
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
@@ -427,115 +415,118 @@
     </div>
 
     @if(count($kanjis) > 0)
-        <script>
-            const allKanjis = @json($kanjis);
-            let kanjis = [];
-            let masteredIds = JSON.parse(localStorage.getItem('mastered_kanji_n3') || '[]');
+    <script>
+        const allKanjis = @json($kanjis);
+        let kanjis = [];
+        let masteredIds = JSON.parse(localStorage.getItem('mastered_kanji_n3') || '[]');
+        let currentIndex = 0;
+        let isRevealed = false;
 
-            function shuffleArray(array) { 
-                for (let i = array.length - 1; i > 0; i--) { 
-                    const j = Math.floor(Math.random() * (i + 1)); 
-                    [array[i], array[j]] = [array[j], array[i]]; 
-                } 
+        const answerArea      = document.getElementById('answerArea');
+        const kanjiDisplay    = document.getElementById('kanjiDisplay');
+        const onyomiVal       = document.getElementById('onyomiVal');
+        const kunyomiVal      = document.getElementById('kunyomiVal');
+        const artiVal         = document.getElementById('artiVal');
+        const meaningVal      = document.getElementById('meaningVal');
+        const progressFill    = document.getElementById('progressFill');
+        const progressCounter = document.getElementById('progressCounter');
+        const btnReveal       = document.getElementById('btnReveal');
+        const tapHint         = document.getElementById('tapHint');
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-            
-            let currentIndex = 0; 
-            let isFlipped = false;
-            
-            const flashcard = document.getElementById('flashcard');
-            const kanjiFront = document.getElementById('kanjiFront');
-            const onyomiBack = document.getElementById('onyomiBack');
-            const kunyomiBack = document.getElementById('kunyomiBack');
-            const meaningBack = document.getElementById('meaningBack');
-            const progressFill = document.getElementById('progressFill');
-            const progressCounter = document.getElementById('progressCounter');
-            const btnReveal = document.getElementById('btnReveal');
+        }
 
-            function applyFilter() {
-                let remaining = allKanjis.filter(k => !masteredIds.includes(k.id));
-
-                if (remaining.length === 0 && allKanjis.length > 0) {
-                    alert("Selamat! Semua kanji N3 telah diingat. Progress akan direset.");
-                    masteredIds = [];
-                    localStorage.removeItem('mastered_kanji_n3');
-                    remaining = [...allKanjis];
-                }
-
-                kanjis = remaining;
-                shuffleArray(kanjis);
-                currentIndex = 0;
-                isFlipped = false;
-                flashcard.classList.remove('is-flipped');
-                btnReveal.textContent = 'Reveal';
-                updateCardContent();
+        function applyFilter() {
+            let remaining = allKanjis.filter(k => !masteredIds.includes(k.id));
+            if (remaining.length === 0 && allKanjis.length > 0) {
+                alert('Selamat! Semua kanji N3 telah diingat. Progress akan direset.');
+                masteredIds = [];
+                localStorage.removeItem('mastered_kanji_n3');
+                remaining = [...allKanjis];
             }
+            kanjis = remaining;
+            shuffleArray(kanjis);
+            currentIndex = 0;
+            hideAnswer();
+            updateCardContent();
+        }
 
-            function markAsMastered() {
-                const current = kanjis[currentIndex];
-                if (!current) return;
-                
-                masteredIds.push(current.id);
-                localStorage.setItem('mastered_kanji_n3', JSON.stringify(masteredIds));
+        function updateCardContent() {
+            if (kanjis.length === 0) {
+                kanjiDisplay.textContent = 'DONE';
+                progressCounter.textContent = '0 / 0';
+                progressFill.style.width = '0%';
+                return;
+            }
+            const k = kanjis[currentIndex];
+            kanjiDisplay.textContent = k.kanji;
+            onyomiVal.textContent  = k.onyomi  || '—';
+            kunyomiVal.textContent = k.kunyomi || '—';
+            artiVal.textContent    = k.arti    || '—';
+            meaningVal.textContent = k.arti    || '—';
+            const total = kanjis.length;
+            progressCounter.textContent = `${currentIndex + 1} / ${total}`;
+            progressFill.style.width = `${((currentIndex + 1) / total) * 100}%`;
+        }
+
+        function showAnswer() {
+            isRevealed = true;
+            answerArea.classList.add('visible');
+            btnReveal.textContent = 'Sembunyikan';
+            tapHint.textContent = 'Ketuk untuk menyembunyikan';
+        }
+
+        function hideAnswer() {
+            isRevealed = false;
+            answerArea.classList.remove('visible');
+            btnReveal.textContent = 'Tampilkan';
+            tapHint.textContent = 'Ketuk untuk melihat jawaban';
+        }
+
+        function toggleReveal() {
+            isRevealed ? hideAnswer() : showAnswer();
+        }
+
+        function nextCard() {
+            hideAnswer();
+            currentIndex = (currentIndex + 1) % kanjis.length;
+            updateCardContent();
+        }
+
+        function prevCard() {
+            hideAnswer();
+            currentIndex = (currentIndex - 1 + kanjis.length) % kanjis.length;
+            updateCardContent();
+        }
+
+        function markAsMastered() {
+            const current = kanjis[currentIndex];
+            if (!current) return;
+            masteredIds.push(current.id);
+            localStorage.setItem('mastered_kanji_n3', JSON.stringify(masteredIds));
+            applyFilter();
+        }
+
+        function resetMastery() {
+            if (confirm('Reset semua progress hafalan di modul ini?')) {
+                masteredIds = [];
+                localStorage.removeItem('mastered_kanji_n3');
                 applyFilter();
             }
+        }
 
-            function resetMastery() {
-                if (confirm("Reset semua progress hafalan di modul ini?")) {
-                    masteredIds = [];
-                    localStorage.removeItem('mastered_kanji_n3');
-                    applyFilter();
-                }
-            }
+        document.addEventListener('keydown', e => {
+            if (e.code === 'Space')      { e.preventDefault(); toggleReveal(); }
+            if (e.code === 'ArrowRight') nextCard();
+            if (e.code === 'ArrowLeft')  prevCard();
+        });
 
-            function updateCardContent() {
-                if (kanjis.length === 0) {
-                    kanjiFront.textContent = "DONE";
-                    progressCounter.textContent = "0 / 0";
-                    progressFill.style.width = "0%";
-                    return;
-                }
-                const current = kanjis[currentIndex];
-                kanjiFront.textContent = current.kanji;
-                onyomiBack.textContent = current.onyomi || '—';
-                kunyomiBack.textContent = current.kunyomi || '—';
-                meaningBack.textContent = current.arti || '—';
-                
-                const total = kanjis.length;
-                const currentNum = currentIndex + 1;
-                progressCounter.textContent = `${currentNum} / ${total}`;
-                progressFill.style.width = `${(currentNum / total) * 100}%`;
-            }
-
-            function toggleReveal() { 
-                isFlipped = !isFlipped; 
-                flashcard.classList.toggle('is-flipped', isFlipped); 
-                btnReveal.textContent = isFlipped ? 'Hide' : 'Reveal'; 
-            }
-            
-            function nextCard() { 
-                isFlipped = false; 
-                flashcard.classList.remove('is-flipped'); 
-                btnReveal.textContent = 'Reveal'; 
-                currentIndex = (currentIndex + 1) % kanjis.length; 
-                updateCardContent(); 
-            }
-            
-            function prevCard() { 
-                isFlipped = false; 
-                flashcard.classList.remove('is-flipped'); 
-                btnReveal.textContent = 'Reveal'; 
-                currentIndex = (currentIndex - 1 + kanjis.length) % kanjis.length; 
-                updateCardContent(); 
-            }
-
-            document.addEventListener('keydown', (e) => {
-                if (e.code === 'Space') { e.preventDefault(); toggleReveal(); }
-                if (e.code === 'ArrowRight') nextCard();
-                if (e.code === 'ArrowLeft') prevCard();
-            });
-            
-            window.onload = applyFilter;
-        </script>
+        window.onload = applyFilter;
+    </script>
     @endif
 </body>
 </html>
